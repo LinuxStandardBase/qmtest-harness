@@ -1,6 +1,6 @@
 %define name qm
 %define version 2.2
-%define release 1
+%define release 2
 
 Summary: QMTest is an automated software test execution tool.
 Name: %{name}
