@@ -82,8 +82,8 @@
 # attributions are listed in the accompanying credits file.
 # 
 ##############################################################################
-'''$Id: DT_Util.py,v 1.1 2004/06/22 05:15:32 mats Exp $''' 
-__version__='$Revision: 1.1 $'[11:-2]
+'''$Id: DT_Util.py,v 1.2 2005/02/22 23:15:22 mats Exp $''' 
+__version__='$Revision: 1.2 $'[11:-2]
 
 import regex, string, math, os
 from string import strip, join, atoi, lower, split, find
@@ -201,7 +201,7 @@ def careful_range(md, iFirst, *args):
     if iLen >= RANGELIMIT: raise ValueError, 'range() too large'
     return range(iStart, iEnd, iStep)
 
-import string, math, whrandom
+import string, math, random
 
 try:
     import ExtensionClass
@@ -215,7 +215,7 @@ for name in ('None', 'abs', 'chr', 'divmod', 'float', 'hash', 'hex', 'int',
     d[name]=__builtins__[name]
 d['string']=string
 d['math']=math
-d['whrandom']=whrandom
+d['random']=random
 
 def careful_pow(self, x, y, z):
     if not z: raise ValueError, 'pow(x, y, z) with z==0'
@@ -428,7 +428,7 @@ Python expression support
 
   - Special security-aware versions of 'getattr' and 'hasattr',
   
-  - The Python 'string', 'math', and 'whrandom' modules, and
+  - The Python 'string', 'math', and 'random' modules, and
   
   - A special function, 'test', that supports if-then expressions.
     The 'test' function accepts any number of arguments.  If the
