@@ -9,3 +9,4 @@ buildarchtranslate: k6 i486
 #
 # Force a ppc64 target
 buildarchtranslate: ppc64pseries ppc64
+buildarchtranslate: ppc64iseries ppc64
