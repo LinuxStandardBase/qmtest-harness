@@ -14,6 +14,10 @@ Prefix: %{_prefix}
 Vendor: Mark Mitchell <mark@codesourcery.com>
 Packager: LSB Test Team <lsb-test@freestandards.org>
 Url: http://www.codesourcery.com/qm/test
+Requires: lsb-python
+BuildRequires: lsb-python
+AutoReqProv: no
+
 
 %description
 UNKNOWN
@@ -22,13 +26,14 @@ UNKNOWN
 %setup
 
 %build
-env CFLAGS="$RPM_OPT_FLAGS" python setup.py build
+./configure --exec_prefix=/opt/lsb/test --with-python=/opt/lsb/appbat/bin/python
+env CFLAGS="$RPM_OPT_FLAGS" /opt/lsb/appbat/bin/python setup.py build
 
 %install
-python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+/opt/lsb/appbat/bin/python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
