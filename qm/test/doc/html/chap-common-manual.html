@@ -1,0 +1,221 @@
+<HTML
+><HEAD
+><TITLE
+>The QM Configuration File</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Registering an Extension Class"
+HREF="sec-registering-extension-class.html"><LINK
+REL="NEXT"
+TITLE="Configuration Variables"
+HREF="sec-rc-common.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-registering-extension-class.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-rc-common.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-common-manual"
+></A
+>Chapter 5. The <SPAN
+CLASS="application"
+>QM</SPAN
+> Configuration File</H1
+><P
+><SPAN
+CLASS="application"
+>QM</SPAN
+> allows you to set up a per-user configuration file that
+ contains your personal preferences, defaults, and settings.</P
+><P
+>The configuration file is named
+ <TT
+CLASS="filename"
+>$HOME/.qmrc</TT
+>.  On Windows, you may have to set
+ the <TT
+CLASS="envar"
+>HOME</TT
+> environment variable manually.</P
+><P
+>The <SPAN
+CLASS="application"
+>QM</SPAN
+> configuration file is a plain text file, with a format
+ similar to that used in Microsoft Windows <TT
+CLASS="filename"
+>.INI</TT
+>
+ files.  It is divided into sections by headings in square brackets.
+ Three sections are supported: <TT
+CLASS="literal"
+>[common]</TT
+> contains
+ configuration variables common to all the <SPAN
+CLASS="application"
+>QM</SPAN
+> tools, while
+ <TT
+CLASS="literal"
+>[test]</TT
+> contains
+ configuration variables specific to <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.  Within
+ each section, configuration variables are set using the syntax
+ <TT
+CLASS="literal"
+><TT
+CLASS="replaceable"
+><I
+>variable</I
+></TT
+>=<TT
+CLASS="replaceable"
+><I
+>value</I
+></TT
+></TT
+>.</P
+><P
+>Here is a sample <SPAN
+CLASS="application"
+>QM</SPAN
+> configuration file:</P
+><PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>cat ~/.qmrc</B
+></TT
+>
+<TT
+CLASS="computeroutput"
+>[common]
+browser=/usr/local/bin/mozilla
+</TT
+></PRE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-registering-extension-class.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-rc-common.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Registering an Extension Class</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuration Variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

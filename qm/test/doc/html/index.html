@@ -1,0 +1,478 @@
+<HTML
+><HEAD
+><TITLE
+>QMTest: User's Guide and Reference</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="NEXT"
+TITLE="Introduction"
+HREF="chap-introduction.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+></A
+>QMTest: User's Guide and Reference</H1
+><H3
+CLASS="corpauthor"
+>CodeSourcery, LLC</H3
+><P
+CLASS="copyright"
+><A
+HREF="ln8.html"
+>Copyright</A
+> &copy; 2002, 2003, 2004 by CodeSourcery LLC</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="chap-introduction.html"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="chap-test-tour.html"
+>Getting Started with <SPAN
+CLASS="application"
+>QMTest</SPAN
+></A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="sec-testtut-setting-up.html"
+>Setting Up</A
+></DT
+><DT
+>2.2. <A
+HREF="sec-testtut-gui.html"
+>Starting the Graphical Interface</A
+></DT
+><DT
+>2.3. <A
+HREF="sec-testtut-running-tests.html"
+>Running Tests</A
+></DT
+><DT
+>2.4. <A
+HREF="sec-testtut-expectations.html"
+>Setting Expectations</A
+></DT
+><DT
+>2.5. <A
+HREF="sec-testtut-examining.html"
+>Examining Tests</A
+></DT
+><DT
+>2.6. <A
+HREF="sec-testtut-modifying.html"
+>Modifying and Creating Tests</A
+></DT
+><DT
+>2.7. <A
+HREF="sec-testtut-cmdline.html"
+>Using the Command-Line Interface</A
+></DT
+><DT
+>2.8. <A
+HREF="sec-testtut-expected-outcomes.html"
+>Expectations on the Command Line</A
+></DT
+><DT
+>2.9. <A
+HREF="sec-testtut-results.html"
+>Reviewing Results</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="chap-test-manual.html"
+>Using <SPAN
+CLASS="application"
+>QMTest</SPAN
+></A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="sec-qmtest-concepts.html"
+><SPAN
+CLASS="application"
+>QMTest</SPAN
+> Concepts</A
+></DT
+><DD
+><DL
+><DT
+>3.1.1. <A
+HREF="sec-qmtest-concepts.html#sec-tests"
+>Tests</A
+></DT
+><DT
+>3.1.2. <A
+HREF="sec-qmtest-concepts.html#sec-resources"
+>Resources</A
+></DT
+><DT
+>3.1.3. <A
+HREF="sec-qmtest-concepts.html#sec-context"
+>Context</A
+></DT
+><DT
+>3.1.4. <A
+HREF="sec-qmtest-concepts.html#sec-test-results"
+>Test Results</A
+></DT
+><DT
+>3.1.5. <A
+HREF="sec-qmtest-concepts.html#sec-test-suite"
+>Test Suite</A
+></DT
+><DT
+>3.1.6. <A
+HREF="sec-qmtest-concepts.html#sec-test-database"
+>Test Database</A
+></DT
+><DT
+>3.1.7. <A
+HREF="sec-qmtest-concepts.html#sec-targets"
+>Targets</A
+></DT
+></DL
+></DD
+><DT
+>3.2. <A
+HREF="sec-running-tests.html"
+>Running Tests</A
+></DT
+><DD
+><DL
+><DT
+>3.2.1. <A
+HREF="sec-running-tests.html#sec-ordering-and-dependencies"
+>Ordering and Dependencies</A
+></DT
+><DT
+>3.2.2. <A
+HREF="sec-running-tests.html#sec-the-context"
+>The Context</A
+></DT
+></DL
+></DD
+><DT
+>3.3. <A
+HREF="sec-database-contents.html"
+>Test Database Contents</A
+></DT
+><DT
+>3.4. <A
+HREF="sec-test-command-line.html"
+>Invoking <SPAN
+CLASS="application"
+>QMTest</SPAN
+></A
+></DT
+><DD
+><DL
+><DT
+>3.4.1. <A
+HREF="sec-test-command-line.html#AEN622"
+><B
+CLASS="command"
+>qmtest</B
+></A
+></DT
+><DT
+>3.4.2. <A
+HREF="sec-test-command-line.html#sec-testcmd-create"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> create</B
+></A
+></DT
+><DT
+>3.4.3. <A
+HREF="sec-test-command-line.html#sec-testcmd-create-target"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> create-target</B
+></A
+></DT
+><DT
+>3.4.4. <A
+HREF="sec-test-command-line.html#sec-testcmd-create-tdb"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> create-tdb</B
+></A
+></DT
+><DT
+>3.4.5. <A
+HREF="sec-test-command-line.html#sec-testcmd-gui"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> gui</B
+></A
+></DT
+><DT
+>3.4.6. <A
+HREF="sec-test-command-line.html#sec-testcmd-extensions"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> extensions</B
+></A
+></DT
+><DT
+>3.4.7. <A
+HREF="sec-test-command-line.html#sec-testcmd-register"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> register</B
+></A
+></DT
+><DT
+>3.4.8. <A
+HREF="sec-test-command-line.html#sec-testcmd-run"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> run</B
+></A
+></DT
+><DT
+>3.4.9. <A
+HREF="sec-test-command-line.html#sec-testcmd-summarize"
+><B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> summarize</B
+></A
+></DT
+><DT
+>3.4.10. <A
+HREF="sec-test-command-line.html#sec-env-vars"
+>Environment Variables</A
+></DT
+><DT
+>3.4.11. <A
+HREF="sec-test-command-line.html#sec-config-file"
+>Configuration Variables</A
+></DT
+><DT
+>3.4.12. <A
+HREF="sec-test-command-line.html#sec-return-value"
+>Return Value</A
+></DT
+></DL
+></DD
+><DT
+>3.5. <A
+HREF="sec-ref-classes.html"
+>Test and Resource Classes</A
+></DT
+><DD
+><DL
+><DT
+>3.5.1. <A
+HREF="sec-ref-classes.html#sec-ref-test-classes"
+>Test Classes</A
+></DT
+></DL
+></DD
+><DT
+>3.6. <A
+HREF="sec-ref-targets.html"
+>Test Targets</A
+></DT
+><DD
+><DL
+><DT
+>3.6.1. <A
+HREF="sec-ref-targets.html#sec-target-specification"
+>Target Specification</A
+></DT
+><DT
+>3.6.2. <A
+HREF="sec-ref-targets.html#sec-target-classes"
+>Target Classes</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>4. <A
+HREF="chap-test-extension.html"
+>Extending QMTest</A
+></DT
+><DD
+><DL
+><DT
+>4.1. <A
+HREF="sec-extension-classes.html"
+>Extension Classes</A
+></DT
+><DT
+>4.2. <A
+HREF="sec-field-classes.html"
+>Field Classes</A
+></DT
+><DD
+><DL
+><DT
+>4.2.1. <A
+HREF="sec-field-classes.html#sec-field-classes-list"
+>Built-In Field Classes</A
+></DT
+><DT
+>4.2.2. <A
+HREF="sec-field-classes.html#sec-field-classes-writing"
+>Writing Field Classes</A
+></DT
+></DL
+></DD
+><DT
+>4.3. <A
+HREF="sec-writing-test-classes.html"
+>Writing Test Classes</A
+></DT
+><DT
+>4.4. <A
+HREF="sec-writing-resource-classes.html"
+>Writing Resource Classes</A
+></DT
+><DT
+>4.5. <A
+HREF="sec-ref-writing-database-classes.html"
+>Writing Database Classes</A
+></DT
+><DT
+>4.6. <A
+HREF="sec-registering-extension-class.html"
+>Registering an Extension Class</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="chap-common-manual.html"
+>The <SPAN
+CLASS="application"
+>QM</SPAN
+> Configuration File</A
+></DT
+><DD
+><DL
+><DT
+>5.1. <A
+HREF="sec-rc-common.html"
+>Configuration Variables</A
+></DT
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="chap-introduction.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

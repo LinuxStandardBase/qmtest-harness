@@ -1,0 +1,242 @@
+<HTML
+><HEAD
+><TITLE
+>Registering an Extension Class</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending QMTest"
+HREF="chap-test-extension.html"><LINK
+REL="PREVIOUS"
+TITLE="Writing Database Classes"
+HREF="sec-ref-writing-database-classes.html"><LINK
+REL="NEXT"
+TITLE="The QM Configuration File"
+HREF="chap-common-manual.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-ref-writing-database-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Extending QMTest</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="chap-common-manual.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-registering-extension-class"
+></A
+>4.6. Registering an Extension Class</H1
+><P
+>To use your test or resource class, you must place the Python
+   module file containing it in a directory where <SPAN
+CLASS="application"
+>QMTest</SPAN
+> can find
+   it.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> looks in three places when loading
+   extension classes:</P
+><P
+></P
+><UL
+><LI
+><P
+>If the environment variable <TT
+CLASS="envar"
+>QMTEST_CLASS_PATH</TT
+>
+     is defined, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> first checks any directories listed in it.
+     This value of this environment variable should be a list of
+     directories to check for the module file, in the same format as
+     the standard <TT
+CLASS="envar"
+>PATH</TT
+> environment variable.</P
+></LI
+><LI
+><P
+>A test database may specify additional locations to check.</P
+></LI
+><LI
+><P
+>QMTest checks the configuration directory (the subdirectory
+     named <TT
+CLASS="filename"
+>QMTest</TT
+> of a test database).</P
+></LI
+><LI
+><P
+>Finally, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> checks a standard directory.  This
+     directory, installed with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>, contains modules with the
+     standard test classes described in <A
+HREF="sec-ref-classes.html"
+>Section 3.5</A
+>.</P
+></LI
+></UL
+><P
+>You should generally place module files containing your test
+   classes in the test database's <TT
+CLASS="filename"
+>QMTest</TT
+>
+   directory, unless you plan to use the test classes in more than one
+   test database.</P
+><P
+>You must use the <B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+> register</B
+>
+   command to register your new extension class.  You must perform
+   this step no matter where you place the module containing your
+   extension class.</P
+><P
+>You can refer to the new extension class using the syntax
+   <TT
+CLASS="classname"
+>module.Class</TT
+>, where
+   <TT
+CLASS="classname"
+>module</TT
+> is the name of the module and
+   <TT
+CLASS="classname"
+>Class</TT
+> is the name of the class.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-ref-writing-database-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="chap-common-manual.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Writing Database Classes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-extension.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The <SPAN
+CLASS="application"
+>QM</SPAN
+> Configuration File</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

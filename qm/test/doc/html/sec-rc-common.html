@@ -1,0 +1,286 @@
+<HTML
+><HEAD
+><TITLE
+>Configuration Variables</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="The QM Configuration File"
+HREF="chap-common-manual.html"><LINK
+REL="PREVIOUS"
+TITLE="The QM Configuration File"
+HREF="chap-common-manual.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="chap-common-manual.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. The <SPAN
+CLASS="application"
+>QM</SPAN
+> Configuration File</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-rc-common"
+></A
+>5.1. Configuration Variables</H1
+><P
+>These configuration variables are used in all <SPAN
+CLASS="application"
+>QM</SPAN
+> tools.  You
+  should define them in the <TT
+CLASS="literal"
+>[common]</TT
+> section of your
+  <SPAN
+CLASS="application"
+>QM</SPAN
+> configuration file.</P
+><DIV
+CLASS="glosslist"
+><DL
+><DT
+><B
+>&#13;     <SPAN
+CLASS="property"
+>browser</SPAN
+> (UNIX-like platforms only)
+    </B
+></DT
+><DD
+><P
+>The path to your preferred web browser.  If omitted, <SPAN
+CLASS="application"
+>QM</SPAN
+>
+     attempts to run <TT
+CLASS="filename"
+>mozilla</TT
+>.  The <SPAN
+CLASS="application"
+>QM</SPAN
+> GUI does
+     not correctly with Netscape 4 due to limitations in the support
+     for JavaScript and DOM in that browser.</P
+></DD
+><DT
+><B
+>&#13;     <SPAN
+CLASS="property"
+>command_shell</SPAN
+>
+    </B
+></DT
+><DD
+><P
+>The shell program to run a single shell command.  The value
+     of this property is the path to the shell executable, optionally
+     followed by command-line options to pass to the shell, separated
+     by spaces.  The shell command to run is appended to the
+     command.</P
+><P
+>On GNU/Linux systems, the default is
+     <TT
+CLASS="filename"
+>/bin/bash -norc -noprofile -c</TT
+>.
+     On other UNIX-like systems, the default is
+     <TT
+CLASS="filename"
+>/bin/sh -c</TT
+>.</P
+></DD
+><DT
+><B
+>&#13;     <SPAN
+CLASS="property"
+>click_menus</SPAN
+>
+    </B
+></DT
+><DD
+><P
+>If this option is not present, or has the value
+     <TT
+CLASS="literal"
+>0</TT
+>, menus in the
+     GUI are activated by moving the mouse over the menu name.
+     </P
+><P
+>If this option has the value <TT
+CLASS="literal"
+>1</TT
+>, the
+     menus are activated by clicking on the menu name.
+     </P
+></DD
+><DT
+><B
+>&#13;     <SPAN
+CLASS="property"
+>remote_shell</SPAN
+> (UNIX-like platforms only)
+    </B
+></DT
+><DD
+><P
+>The program used for running commands on remote computers.
+     The program must accept the same syntax as the standard
+     <TT
+CLASS="filename"
+>rsh</TT
+> command, and should be configured to run
+     the command remotely without any additional interaction (such as
+     requesting a password from the TTY).  The default value is
+     <TT
+CLASS="filename"
+>/usr/bin/ssh</TT
+>.</P
+></DD
+><DT
+><B
+>&#13;     <SPAN
+CLASS="property"
+>script_shell</SPAN
+>
+    </B
+></DT
+><DD
+><P
+>The shell program to run a shell script.  The value of this
+     property is the path to the shell executable, optionally followed
+     by command-line options to pass to the shell, separated by spaces.
+     The filename of the shell command is appended to the
+     command.</P
+><P
+>On GNU/Linux systems, the default is
+     <TT
+CLASS="filename"
+>/bin/bash -norc -noprofile</TT
+>.  On
+     other UNIX-like systems, the default is
+     <TT
+CLASS="filename"
+>/bin/sh</TT
+>.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="chap-common-manual.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The <SPAN
+CLASS="application"
+>QM</SPAN
+> Configuration File</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-common-manual.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
