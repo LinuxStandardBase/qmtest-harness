@@ -30,7 +30,7 @@ UNKNOWN
 env CFLAGS="$RPM_OPT_FLAGS" /opt/lsb/appbat/bin/python setup.py build
 
 %install
-/opt/lsb/appbat/bin/python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+/opt/lsb/appbat/bin/python setup.py install --root=$RPM_BUILD_ROOT --install-data=/opt/lsb/test --record=INSTALLED_FILES
 
 %clean
 #rm -rf $RPM_BUILD_ROOT
