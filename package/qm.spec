@@ -12,6 +12,7 @@ Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-buildroot
 Prefix: %{_prefix}
 Vendor: Mark Mitchell <mark@codesourcery.com>
+Packager: LSB Test Team <lsb-test@freestandards.org>
 Url: http://www.codesourcery.com/qm/test
 
 %description
