@@ -1,0 +1,236 @@
+<HTML
+><HEAD
+><TITLE
+>Using QMTest</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Reviewing Results"
+HREF="sec-testtut-results.html"><LINK
+REL="NEXT"
+TITLE="QMTest Concepts"
+HREF="sec-qmtest-concepts.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-results.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-qmtest-concepts.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="chap-test-manual"
+></A
+>Chapter 3. Using <SPAN
+CLASS="application"
+>QMTest</SPAN
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>3.1. <A
+HREF="sec-qmtest-concepts.html"
+><SPAN
+CLASS="application"
+>QMTest</SPAN
+> Concepts</A
+></DT
+><DT
+>3.2. <A
+HREF="sec-running-tests.html"
+>Running Tests</A
+></DT
+><DT
+>3.3. <A
+HREF="sec-database-contents.html"
+>Test Database Contents</A
+></DT
+><DT
+>3.4. <A
+HREF="sec-test-command-line.html"
+>Invoking <SPAN
+CLASS="application"
+>QMTest</SPAN
+></A
+></DT
+><DT
+>3.5. <A
+HREF="sec-ref-classes.html"
+>Test and Resource Classes</A
+></DT
+><DT
+>3.6. <A
+HREF="sec-ref-targets.html"
+>Test Targets</A
+></DT
+></DL
+></DIV
+><P
+>This chapter describes <SPAN
+CLASS="application"
+>QMTest</SPAN
+> in more detail.  It explains
+  the fundamental concepts that <SPAN
+CLASS="application"
+>QMTest</SPAN
+> uses, the test classes that
+  come with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>, and how to extend <SPAN
+CLASS="application"
+>QMTest</SPAN
+> to support new
+  application domains.</P
+><P
+>The central principle underlying the design of QMTest is that
+  the problem of testing can be divided into a domain-dependent problem
+  and a domain-independent problem.  The domain-dependent problem is
+  deciding what to test and how to test it.  For example, should a
+  database be tested by performing unit tests on the C code that makes
+  up the database, or by performing integration tests using SQL queries?
+  How should the output of a query asking for a set of records be
+  compared to expected output?  Does the order in which records are
+  presented matter?  These are questions that only someone who
+  understands the application domain can answer.</P
+><P
+>The domain-independent part of the problem is managing the
+  creation of tests, executing the tests, and displaying the results for
+  users.  For example, how does a user create a new test?  How are tests
+  stored?  Should failing tests be reported to the user, even if the
+  failure was expected?  These questions are independent of the
+  application domain; they are just as relevant for compiler tests as
+  they are for database tests.</P
+><P
+>QMTest is intended to solve the domain-independent part of the
+  problem and to offer a convenient, powerful, and flexible interface
+  for solving the domain-dependent problem.  QMTest is both a complete
+  application, in that it can be used <SPAN
+CLASS="QUOTE"
+>"out of the box"</SPAN
+> to
+  handle many testing domains, and infrastructure, in that it can be
+  extended to handle other domains.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-testtut-results.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-qmtest-concepts.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reviewing Results</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="application"
+>QMTest</SPAN
+> Concepts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

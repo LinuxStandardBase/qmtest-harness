@@ -1,0 +1,315 @@
+<HTML
+><HEAD
+><TITLE
+>Writing Database Classes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending QMTest"
+HREF="chap-test-extension.html"><LINK
+REL="PREVIOUS"
+TITLE="Writing Resource Classes"
+HREF="sec-writing-resource-classes.html"><LINK
+REL="NEXT"
+TITLE="Registering an Extension Class"
+HREF="sec-registering-extension-class.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-writing-resource-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Extending QMTest</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-registering-extension-class.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-ref-writing-database-classes"
+></A
+>4.5. Writing Database Classes</H1
+><P
+>The test database class controls the format in which tests are
+  stored.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+>'s default database class stores each test as an XML
+  file, but you might want to use a format that is particularly well
+  suited to your application domain or to your organization's
+  arrangement of computing resources.</P
+><P
+>For example, if you were testing a compiler, you might want to
+  represent tests as source files with special embedded comments
+  indicating what errors are expected when compiling the test.  You
+  could write a test database class that can read and write tests
+  in that format.</P
+><P
+>Or, if you wanted to share a single test database with many
+  people in such a way that everyone automatically saw updates to the
+  database, you might want to put all of the tests on a central HTTP
+  server.  You could write a test database class that retrieves tests
+  from the server and creates new tests by uploading them to the
+  server.</P
+><P
+>A test database class is a Python class that is derived from
+  <A
+HREF="http://www.codesourcery.com/public/qmtest/qm-2.2/internals/qm/test/database/Database.html"
+TARGET="_top"
+><TT
+CLASS="classname"
+>Database</TT
+></A
+>, which is itself derived from
+  <TT
+CLASS="classname"
+>Extension</TT
+>.  To create a new database class,
+  you must define methods that read and write tests, resources, and
+  suites.</P
+><P
+>The database is also responsible for determining how tests
+  (and other entities stored in the database) are named.  Each item
+  stored in the database must have a unique name.  For a database that
+  stores files in the filesystem, the name of the file may be a good
+  name.  For a database of unit tests for Python module, the name of
+  the module might be a good name for the tests.  Choosing the naming
+  convention appropriate requires understanding both the application
+  domain and the way in which the tests will actually be
+  stored.</P
+><P
+>The database class must have a <TT
+CLASS="function"
+>GetTest</TT
+>
+  function which retrieves a test from the database.  The
+  <TT
+CLASS="parameter"
+><I
+>test_id</I
+></TT
+> parameter provide the name of the
+  test.  The <TT
+CLASS="function"
+>GetTest</TT
+> function returns a
+  <A
+HREF="http://www.codesourcery.com/public/qmtest/qm-2.2/internals/qm/test/database/TestDescriptor.html"
+TARGET="_top"
+><TT
+CLASS="classname"
+>TestDescriptor</TT
+></A
+>.
+  <A
+NAME="AEN1764"
+HREF="#FTN.AEN1764"
+>[1]</A
+> A
+  <TT
+CLASS="classname"
+>TestDescriptor</TT
+> indicates the test class, and
+  the arguments to that test class.  QMTest uses that information to
+  instantiate an instance of the test class itself as
+  appropriate.</P
+><P
+>The <TT
+CLASS="function"
+>Write</TT
+> function is the inverse of
+  <TT
+CLASS="function"
+>GetTest</TT
+>.  The test database is responsible for
+  storing the <TT
+CLASS="classname"
+>Test</TT
+> provided.  The name of test
+  can be obtained by calling <TT
+CLASS="function"
+>GetId</TT
+> on the
+  <TT
+CLASS="classname"
+>Test</TT
+>.  When the <TT
+CLASS="function"
+>Remove</TT
+>
+  function is called the database is responsible for removing the test
+  named by the <TT
+CLASS="parameter"
+><I
+>id</I
+></TT
+> parameter.</P
+><P
+>The functions that handle resources are analogous to those
+  for tests.  For exmaple, <TT
+CLASS="function"
+>GetResource</TT
+> plays the
+  same role for resources as <TT
+CLASS="function"
+>GetTest</TT
+> does for
+  tests.</P
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN1764"
+HREF="sec-ref-writing-database-classes.html#AEN1764"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+><TT
+CLASS="function"
+>GetTest</TT
+> returns a
+  <TT
+CLASS="classname"
+>TestDescriptor</TT
+>, rather than a
+  <TT
+CLASS="classname"
+>Test</TT
+>, because that allows QMTest to avoid
+  loading in the test class.  If you are running many tests in
+  parallel, on many different machines, this indirection makes QMTest
+  more effficient; QMTest only needs to load a particular test class
+  on a particular machine if an instance of that class is being run
+  on that machine.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-writing-resource-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-registering-extension-class.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Writing Resource Classes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-extension.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Registering an Extension Class</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

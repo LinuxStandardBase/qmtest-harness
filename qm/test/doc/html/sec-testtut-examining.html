@@ -1,0 +1,251 @@
+<HTML
+><HEAD
+><TITLE
+>Examining Tests</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Getting Started with QMTest"
+HREF="chap-test-tour.html"><LINK
+REL="PREVIOUS"
+TITLE="Setting Expectations"
+HREF="sec-testtut-expectations.html"><LINK
+REL="NEXT"
+TITLE="Modifying and Creating Tests"
+HREF="sec-testtut-modifying.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-expectations.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Getting Started with <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-modifying.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-testtut-examining"
+></A
+>2.5. Examining Tests</H1
+><P
+>Click on the <TT
+CLASS="filename"
+>exec1</TT
+> label to examine the
+   failing test.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will display information about the test.
+   The most important information about the test is its
+   <I
+CLASS="firstterm"
+>test class</I
+>.  This test is an instance of the
+   <TT
+CLASS="classname"
+>python.ExecTest</TT
+> class.  The test class
+   indicates what kind of test <TT
+CLASS="filename"
+>exec1</TT
+> is.
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+> gives a brief description of the test class in the GUI; a
+   <TT
+CLASS="classname"
+>python.ExecTest</TT
+> checks that a Python
+   expression evaluates to true.</P
+><P
+>For more details about the test class, you can click on the
+   <SPAN
+CLASS="guilabel"
+>Help</SPAN
+> link to the right of the description.
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will pop up a window that describes the test in more
+   detail.  In summary, a <TT
+CLASS="classname"
+>python.ExecTest</TT
+>
+   executes some setup code.  Then, a Python expression is evaluated.
+   If the expression evaluates to true, the test passes; otherwise, it
+   fails.</P
+><P
+>The setup code and the expression are the
+   <I
+CLASS="firstterm"
+>arguments</I
+> to the test class.  Every test
+   class takes arguments; the arguments are what differentiate one
+   instance of a test class from another.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> displays the
+   arguments for the <TT
+CLASS="filename"
+>exec1</TT
+> test in the GUI.  In
+   this case, the sequence of statements is simply the single
+   statement <TT
+CLASS="literal"
+>x = 2</TT
+>, which assigns
+   <TT
+CLASS="literal"
+>2</TT
+> to the variable <TT
+CLASS="varname"
+>x</TT
+>.  The
+   expression is <TT
+CLASS="literal"
+>x + x == 5</TT
+>, which compares
+   <TT
+CLASS="literal"
+>x + x</TT
+> with <TT
+CLASS="literal"
+>5</TT
+>.  Since
+   <TT
+CLASS="varname"
+>x</TT
+> is <TT
+CLASS="literal"
+>2</TT
+> in this case, this
+   expression evaluates to false.  That is why the test fails.</P
+><P
+>You can click on the <SPAN
+CLASS="guilabel"
+>Help</SPAN
+> link next to
+   each argument to get more details about exactly what the argument
+   is for.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-testtut-expectations.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-testtut-modifying.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Setting Expectations</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-tour.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Modifying and Creating Tests</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

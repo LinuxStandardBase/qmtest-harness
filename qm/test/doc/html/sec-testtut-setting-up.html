@@ -1,0 +1,377 @@
+<HTML
+><HEAD
+><TITLE
+>Setting Up</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Getting Started with QMTest"
+HREF="chap-test-tour.html"><LINK
+REL="PREVIOUS"
+TITLE="Getting Started with QMTest"
+HREF="chap-test-tour.html"><LINK
+REL="NEXT"
+TITLE="Starting the Graphical Interface"
+HREF="sec-testtut-gui.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="chap-test-tour.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Getting Started with <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-gui.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-testtut-setting-up"
+></A
+>2.1. Setting Up</H1
+><P
+>A test database is a directory that <SPAN
+CLASS="application"
+>QMTest</SPAN
+> uses to store
+   tests.  If you want to create a new, empty test database from
+   scratch, you use the <B
+CLASS="command"
+><B
+CLASS="command"
+>qmtest</B
+>
+   create-tdb</B
+> command, but for this tutorial, you should use
+   the sample test database provided with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.  Since you'll
+   modify the test database later in the tutorial, start by making a
+   copy of it.  Copy the entire test database directory tree to
+   another location.  If you've installed <SPAN
+CLASS="application"
+>QMTest</SPAN
+> in the default
+   location you can make a copy of the sample database by running this
+   command on a UNIX system:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>cp -r /usr/qm/tutorial/test/tdb tdb</B
+></TT
+>
+    </PRE
+>
+   On a Windows system, use this command at a DOS 
+     <A
+NAME="AEN83"
+HREF="#FTN.AEN83"
+>[1]</A
+>
+   prompt:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>xcopy c:\Python23\qm\tutorial\test\tdb tdb\ /s</B
+></TT
+>
+    </PRE
+> 
+   The exact paths to use depend on exactly how you have built and
+   installed QMTest.  The paths above are correct for the binary RPM
+   and Windows packages distributed by CodeSourcery.  If you build
+   from the QMTest source distribution, the tutorial may be in another 
+   location, such as <TT
+CLASS="filename"
+>/usr/local/share/qm</TT
+>.</P
+><P
+>Then, enter the new directory you have created.  On both UNIX
+   and Windows systems, you can do this with this command:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>cd tdb</B
+></TT
+>
+    </PRE
+>
+   </P
+><P
+>Make sure that <SPAN
+CLASS="application"
+>QMTest</SPAN
+> is in your <TT
+CLASS="envar"
+>PATH</TT
+> so
+   that the operating system can find it.  On UNIX, you can use this
+   command:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>PATH=/usr/bin:${PATH}; export PATH</B
+></TT
+>
+    </PRE
+>
+   in the Bourne shell.  In the C shell, use:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>setenv PATH /usr/bin:${PATH}</B
+></TT
+>
+    </PRE
+>
+   On Windows, use:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>PATH C:\Python23\Scripts;%PATH%</B
+></TT
+>
+    </PRE
+>
+   If you are not using Python 2.3, replace
+   <TT
+CLASS="filename"
+>C:\Python23</TT
+> with the directory containing your
+   Python installation.</P
+><P
+>In order to avoid having to retype these commands every time you
+   want to use <SPAN
+CLASS="application"
+>QMTest</SPAN
+>, you can set up your system so that these
+   commands are executed automatically when you log in.  Consult your
+   system's manuals to find out how to do this.
+   </P
+><P
+>On Windows, every command in this manual that begins with
+   <B
+CLASS="command"
+>qmtest</B
+> should be read as if it starts with
+   <B
+CLASS="command"
+>qmtest.py</B
+>.  For example, if this tutorial
+   instructs you to type:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest run</B
+></TT
+>
+    </PRE
+>
+   you should instead type:
+    <PRE
+CLASS="screen"
+>&#13;     <TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest.py run</B
+></TT
+>
+    </PRE
+>
+   on a Windows system.
+   </P
+></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN83"
+HREF="sec-testtut-setting-up.html#AEN83"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>Under Windows, you must use the standard Windows
+     command shell (DOS) to run <SPAN
+CLASS="application"
+>QMTest</SPAN
+>; alternative shells (such as Cygwin)
+     will not work with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="chap-test-tour.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-testtut-gui.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Getting Started with <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-tour.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Starting the Graphical Interface</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,814 @@
+<HTML
+><HEAD
+><TITLE
+>QMTest Concepts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Using QMTest"
+HREF="chap-test-manual.html"><LINK
+REL="PREVIOUS"
+TITLE="Using QMTest"
+HREF="chap-test-manual.html"><LINK
+REL="NEXT"
+TITLE="Running Tests"
+HREF="sec-running-tests.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="chap-test-manual.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Using <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-running-tests.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-qmtest-concepts"
+></A
+>3.1. <SPAN
+CLASS="application"
+>QMTest</SPAN
+> Concepts</H1
+><P
+>This section presents the concepts that underlie <SPAN
+CLASS="application"
+>QMTest</SPAN
+>'s design.  By
+  understanding these concepts, you will be able to better understand
+  how <SPAN
+CLASS="application"
+>QMTest</SPAN
+> works.  In addition, you will find it easier to extend
+  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> to new application domains.</P
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-tests"
+></A
+>3.1.1. Tests</H2
+><P
+>A <I
+CLASS="firstterm"
+>test</I
+> checks for the correct behavior
+   of the target application.  What constitutes correct behavior will
+   vary depending on the application domain.  For example, correct
+   behavior for a database might mean that it is able to retrieve
+   records correctly while correct behavior for a compiler might mean
+   that it generates correct object code from input source code.</P
+><P
+>Every test has a name that uniquely identifies the test,
+   within a given <A
+HREF="sec-qmtest-concepts.html#sec-test-database"
+>test
+   database</A
+>.  Test names must be composed entirely of lowercase
+   letters, numbers, the <SPAN
+CLASS="QUOTE"
+>"_"</SPAN
+> character, and the
+   <SPAN
+CLASS="QUOTE"
+>"."</SPAN
+> character.  You can think of test names like file
+   names.  The <SPAN
+CLASS="QUOTE"
+>"."</SPAN
+> character takes the place of
+   <SPAN
+CLASS="QUOTE"
+>"/"</SPAN
+>; it allows you to place a test in a particular
+   <I
+CLASS="firstterm"
+>directory</I
+>.  For example, the test name
+   <TT
+CLASS="filename"
+>a.b.c</TT
+> names a test named
+   <TT
+CLASS="filename"
+>c</TT
+> in the directory <TT
+CLASS="filename"
+>a.b</TT
+>.
+   The directory <TT
+CLASS="filename"
+>a.b</TT
+> is a subdirectory of the
+   directory <TT
+CLASS="filename"
+>a</TT
+>.</P
+><P
+>Every test is an instance of some test class.  The test class
+   dictates how the test is run, what constitutes success, and what
+   constitutes failure.  For example, the
+   <TT
+CLASS="classname"
+>command.ExecTest</TT
+> class that comes with
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+> executes the target application and looks at its output.
+   The test passes if the actual output exactly matches the expected
+   output.</P
+><P
+>The arguments to the test parameterize the test; they are
+   what make two instances of the same test class different from each
+   other.  For example, the arguments to
+   <TT
+CLASS="classname"
+>command.ExecTest</TT
+> indicate which application to
+   run, what command-line arguments to provide, and what output is
+   expected.</P
+><P
+>Sometimes, it may be pointless to run one test unless another
+   test has passed.  Therefore, each test can have a set of associated
+   <I
+CLASS="firstterm"
+>prerequisite tests</I
+>.  If the prerequisite
+   tests did not pass, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will not run the test that depends
+   upon them.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-resources"
+></A
+>3.1.2. Resources</H2
+><P
+>Some tests take a lot of work to set up.  For example, a
+   database test that checks the result of SQL queries may require
+   that the database first be populated with a substantial number of
+   records.  If there are many tests that all use the same set of
+   records, it would be wasteful to set up the database for each test.
+   It would be more efficient to set up the database once, run all of
+   the tests, and then remove the databases upon completion.</P
+><P
+>You can use a <I
+CLASS="firstterm"
+>resource</I
+> to gain this
+   efficiency.  If a test depends on a resource, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will ensure
+   that the resource is available before the test runs.  Once all
+   tests that depend on the resource have been run <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will
+   destroy the resource.</P
+><P
+>Just as every test is an instance of a <I
+CLASS="firstterm"
+>test
+   class</I
+>, every resource is an instance of a
+   <I
+CLASS="firstterm"
+>resource class</I
+>.  The resource class explains
+   how to set up the resource and how to clean up when it is no longer
+   needed.  The arguments to the resource class are what make two
+   instances of the same resource class different from each other.
+   For example, in the case of a resource that sets up a database, the
+   records to place in the database might be given as arguments.
+   Every resource has a name, using the same format that is used for
+   tests.</P
+><P
+>Under some circumstances (such as running tests on multiple
+   machines at once), <SPAN
+CLASS="application"
+>QMTest</SPAN
+> may create more than one instance of
+   the same resource.  Therefore, you should never depend on there
+   being only one instance of a resource.  In addition, if you have
+   asked <SPAN
+CLASS="application"
+>QMTest</SPAN
+> to run tests concurrently, two tests may access the
+   same resource at the same time.  You can, however, be assured that
+   there will be only one instance of a particular resource on a
+   particular target at any one time.</P
+><P
+>Tests have limited access to the resources on which they
+   depend.  A resource may place additional information into the
+   context (<A
+HREF="sec-qmtest-concepts.html#sec-context"
+>Section 3.1.3</A
+>) that is visible to the
+   test.  However, the actual resource object itself is not available
+   to tests.  (The reason for this limitiation is that for a target
+   consisting of multiple processes, the resource object may not be
+   located in the process as the test that depends upon it.)</P
+><P
+>Setting up or cleaning up a resource produces a result, just
+   like those produced for tests.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will display these results
+   in its summary output and record them in the results file.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-context"
+></A
+>3.1.3. Context</H2
+><P
+>When you create a test, you choose arguments for the test.
+   The test class uses this information to run the test.  However, the
+   test class may sometimes need information that is not available
+   when the test is created.  For example, if you are writing compiler
+   tests to verify conformance with the C programming language
+   specification, you do not know the location of the C compiler
+   itself.  The C compiler may be installed in different locations on
+   different machines.</P
+><P
+>A <I
+CLASS="firstterm"
+>context</I
+> gives users
+   a way of conveying this kind of information to tests.  The context
+   is a set of key/value pairs.  The keys are always strings.  The
+   values of all context properties provided by the user are strings.
+   In general, all tests in a given use of <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will have the same
+   context.  However, when a resource is set up, it may place
+   additional information in the context of those tests that depend
+   upon it.  The values inserted by the resource may have any type, so
+   long as they can be "pickled" by Python.</P
+><P
+>All context properties whose names begin with
+   "<TT
+CLASS="literal"
+>qmtest.</TT
+>" are reserved for use by
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.  The values inserted by <SPAN
+CLASS="application"
+>QMTest</SPAN
+> may have any type.  Test
+   and resource classes should not depend on the presence or absence
+   of these properites.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-test-results"
+></A
+>3.1.4. Test Results</H2
+><P
+>A <I
+CLASS="firstterm"
+>result</I
+> is an
+   <I
+CLASS="firstterm"
+>outcome</I
+> together with some
+   <I
+CLASS="firstterm"
+>annotations</I
+>.  The outcome indicates whether
+   the test passed or failed.  The annotations give additional
+   information about the result, such as the manner in which the test
+   failed, the output the test produced, or the amount of time it took
+   to run the test.</P
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-outcomes"
+></A
+>3.1.4.1. Outcomes</H3
+><P
+>The outcome of a test indicates whether it passed or failed,
+    or whether some exceptional event occurred.  There are four test
+    outcomes:
+     <P
+></P
+><UL
+><LI
+><P
+><SPAN
+CLASS="symbol"
+>PASS</SPAN
+>: The test succeeded.</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="symbol"
+>FAIL</SPAN
+>: The test failed.</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="symbol"
+>ERROR</SPAN
+>: A problem occurred in the test execution
+       environment, rather than in the tested system.  For example, this
+       outcome is used when the test class attempted to run an
+       executable in order to test it, but could not because the system
+       call to create a new process failed.</P
+><P
+>This outcome may also indicate a defect in <SPAN
+CLASS="application"
+>QMTest</SPAN
+> or in
+       the test class.</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="symbol"
+>UNTESTED</SPAN
+>: <SPAN
+CLASS="application"
+>QMTest</SPAN
+> did not attempt to execute the test.
+       For example, this outcome is used when <SPAN
+CLASS="application"
+>QMTest</SPAN
+> determines that
+       a prerequisite test failed.</P
+></LI
+></UL
+>
+    </P
+></DIV
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-annotations"
+></A
+>3.1.4.2. Annotations</H3
+><P
+>An annotation is a key/value pair.  Both the keys and values
+    are strings.  The value is HTML.  When a test (or resource) runs
+    it may add annotations to the result.  These annotations are
+    displayed by <SPAN
+CLASS="application"
+>QMTest</SPAN
+> and preserved in the results file.  If you
+    write your own test class, you can use annotations to store
+    information that will make your test class more
+    informative.</P
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-test-suite"
+></A
+>3.1.5. Test Suite</H2
+><P
+>A <I
+CLASS="firstterm"
+>test suite</I
+> is a collection of tests.
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+> can run an entire test suite at once, so by grouping tests
+   together in a test suite, you make it easier to run a number of
+   tests at once.  A single test can be a member of more than one test
+   suite.  A test suite can contain other test suites; the total set
+   of tests in a test suite includes both those tests included
+   directly and those tests included as part of another test suite.
+   Every test suite has a name, following the same conventions given
+   above for tests and resources.</P
+><P
+>One use of test suites is to provide groups of tests that are
+   run in different situations.  For example, the
+   <TT
+CLASS="literal"
+>nightly</TT
+> test suite might consist of those tests
+   that should be run automatically every night, while the
+   <TT
+CLASS="literal"
+>checkin</TT
+> test suite might consist of those tests
+   that have to pass before any changes are made to the target
+   application.</P
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-implicit-test-suites"
+></A
+>3.1.5.1. Implicit Test Suites</H3
+><P
+><A
+HREF="sec-qmtest-concepts.html#sec-tests"
+>Section 3.1.1</A
+> explains how you may arrange
+    tests in a tree hierarchy, using a period
+    (<SPAN
+CLASS="QUOTE"
+>"<TT
+CLASS="literal"
+>.</TT
+>"</SPAN
+>) as the path separator in
+    test names.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> defines an <I
+CLASS="firstterm"
+>implicit test
+    suite</I
+> for each directory.  The name of these implicit
+    test suites is the same as the name of the directory.  The
+    implicit test suite corresponding to a directory contains all
+    tests in that directory or its subdirectories.</P
+><P
+>Consider, for example, a test database which contains tests
+    with these names:</P
+><P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><TT
+CLASS="filename"
+>back_end.db_1</TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="filename"
+>back_end.db2</TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="filename"
+>front_end.cmdline</TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="filename"
+>front_end.gui.widget_1</TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="filename"
+>front_end.gui.widget_2</TT
+></TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+><P
+>For this test database, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> defines implicit test suites
+    with IDs <TT
+CLASS="filename"
+>back_end</TT
+>, <TT
+CLASS="filename"
+>front_end</TT
+>,
+    and <TT
+CLASS="filename"
+>front_end.gui</TT
+>.  The test suite
+    <TT
+CLASS="filename"
+>front_end</TT
+> contains the tests
+    <TT
+CLASS="filename"
+>front_end.cmdline</TT
+>,
+    <TT
+CLASS="filename"
+>front_end.gui.widget_1</TT
+>, and
+    <TT
+CLASS="filename"
+>front_end.gui.widget_2</TT
+>.</P
+><P
+>The suite named "<TT
+CLASS="filename"
+>.</TT
+>" (a single period) is
+    the implicit test suite corresponding to the root directory in the
+    test database.  This suite therefore contains all tests in the
+    database.  For example, the command
+
+    <PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest run .</B
+></TT
+>
+    </PRE
+>
+
+    is equivalent to:
+
+    <PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest run</B
+></TT
+>
+    </PRE
+>
+
+    Both commands run all tests in the database.</P
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-test-database"
+></A
+>3.1.6. Test Database</H2
+><P
+>A <I
+CLASS="firstterm"
+>test database</I
+>
+   stores tests, test suites, and resources.  When you ask <SPAN
+CLASS="application"
+>QMTest</SPAN
+>
+   for a particular test by name, it queries the test database to
+   obtain the test itself.  <SPAN
+CLASS="application"
+>QMTest</SPAN
+> stores a test database in a
+   single directory, which may include many files and
+   subdirectories.</P
+><P
+>In general, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> can only use one test database at a
+   time.  However, it is possible to create a test database which
+   contains other test databases.  This mechanism allows you to store
+   the tests associated with different parts of a large application in
+   different test databases, and still combine them into a single
+   large test database when required.</P
+><P
+>A single test database can store many different kinds of
+   tests.  By default, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> stores tests, resources, and test
+   suites in the test database using subdirectories containing XML
+   files.  Generally, there should be no need to examine or modify
+   these files directly.  However, the use of an XML format makes it
+   easy for you to automatically generate tests from another program,
+   if required.</P
+></DIV
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-targets"
+></A
+>3.1.7. Targets</H2
+><P
+>A <I
+CLASS="firstterm"
+>target</I
+> is <SPAN
+CLASS="application"
+>QMTest</SPAN
+>'s
+   abstraction of a machine.  By using multiple targets, you can run your
+   tests on multiple machines at one.  If you have many tests, and
+   many machines, you can greatly reduce the amount of time it takes
+   to run all of your tests by distributing the tests across multiple
+   targets.</P
+><P
+>By default, <SPAN
+CLASS="application"
+>QMTest</SPAN
+> uses only one target: the machine on
+   which you are running <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.  You may specify other targets by
+   creating a target file, which lists the available targets and their
+   attributes, and specifying the target file when you invoke
+   <B
+CLASS="command"
+>qmtest</B
+>.</P
+><P
+>Each target is a member of a single <I
+CLASS="firstterm"
+>target group</I
+>.  All machines in
+   the same target group are considered equivalent.  A target group is
+   specified by a string.  If you are testing software on multiple
+   platforms at once, the target group might correspond to machines
+   running the same operating system.  For example, all Intel 80386
+   compatible machines running GNU/Linux might be in the
+   <SPAN
+CLASS="QUOTE"
+>"<TT
+CLASS="literal"
+>i386-pc-linux-gnu</TT
+>"</SPAN
+> target
+   group.</P
+><P
+><A
+HREF="sec-ref-targets.html"
+>Section 3.6</A
+> describes how you specify and
+   use targets with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="chap-test-manual.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-running-tests.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Using <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-manual.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Running Tests</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,207 @@
+<HTML
+><HEAD
+><TITLE
+>Writing Resource Classes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Extending QMTest"
+HREF="chap-test-extension.html"><LINK
+REL="PREVIOUS"
+TITLE="Writing Test Classes"
+HREF="sec-writing-test-classes.html"><LINK
+REL="NEXT"
+TITLE="Writing Database Classes"
+HREF="sec-ref-writing-database-classes.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-writing-test-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. Extending QMTest</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-ref-writing-database-classes.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-writing-resource-classes"
+></A
+>4.4. Writing Resource Classes</H1
+><P
+>Writing resource classes is similar to writing test classes.
+  The requirements are the same except that, instead of a
+  <TT
+CLASS="function"
+>Run</TT
+> function, you must provide two functions
+  named <TT
+CLASS="function"
+>SetUp</TT
+> and
+  <TT
+CLASS="function"
+>CleanUp</TT
+>. The <TT
+CLASS="function"
+>SetUp</TT
+>
+  function must have the same signature as a test classs
+  <TT
+CLASS="function"
+>Run</TT
+>.  The <TT
+CLASS="function"
+>CleanUp</TT
+>
+  function is similar, but does not take a
+  <TT
+CLASS="parameter"
+><I
+>context</I
+></TT
+> parameter.</P
+><P
+>The setup function may add additional properties to the
+  context.  These properties will be visible only to tests that
+  require this resource.  To add a context property, use Python's
+  dictionary assignment syntax.</P
+><P
+>Below is an example of setup and cleanup functions for a
+  resource which calls <TT
+CLASS="function"
+>create_my_resource</TT
+> and
+  <TT
+CLASS="function"
+>destroy_my_resource</TT
+> to do the work of creating
+  and destroying the resource.  The resource is identified by a
+  string handle, which is inserted into the context under the name
+  <TT
+CLASS="literal"
+>Resource.handle</TT
+>, where it may be accessed by
+  tests.  Context property names should always have the form
+  <TT
+CLASS="literal"
+>Class.name</TT
+> so that there is no risk of collision
+  between properties created by different resource classes.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-writing-test-classes.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-ref-writing-database-classes.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Writing Test Classes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-extension.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Writing Database Classes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

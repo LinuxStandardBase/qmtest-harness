@@ -1,0 +1,280 @@
+<HTML
+><HEAD
+><TITLE
+>Expectations on the Command Line</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Getting Started with QMTest"
+HREF="chap-test-tour.html"><LINK
+REL="PREVIOUS"
+TITLE="Using the Command-Line Interface"
+HREF="sec-testtut-cmdline.html"><LINK
+REL="NEXT"
+TITLE="Reviewing Results"
+HREF="sec-testtut-results.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-cmdline.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Getting Started with <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-testtut-results.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-testtut-expected-outcomes"
+></A
+>2.8. Expectations on the Command Line</H1
+><P
+>When you run <SPAN
+CLASS="application"
+>QMTest</SPAN
+> on the command line, it automatically
+   creates a results file called <TT
+CLASS="filename"
+>results.qmr</TT
+>.
+   You can specify a different filename with the <TT
+CLASS="option"
+>-o</TT
+>
+   option.  Run this command:
+
+   <PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest run -o expected.qmr</B
+></TT
+>
+   </PRE
+>
+
+   to save the results to a file named
+   <TT
+CLASS="filename"
+>expected.qmr</TT
+> instead of the default
+   <TT
+CLASS="filename"
+>results.qmr</TT
+>.</P
+><P
+>Now, when you rerun the tests you can tell <SPAN
+CLASS="application"
+>QMTest</SPAN
+> to use 
+   <TT
+CLASS="filename"
+>expected.qmr</TT
+> as the <I
+CLASS="firstterm"
+>expected
+   results file</I
+>, like this:
+
+   <PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="prompt"
+>&#62; </TT
+><TT
+CLASS="userinput"
+><B
+>qmtest run -O expected.qmr</B
+></TT
+>
+   </PRE
+>
+
+   <SPAN
+CLASS="application"
+>QMTest</SPAN
+> will rerun the tests, but this time it will not mention
+   the failure of <TT
+CLASS="filename"
+>exec1</TT
+>.  The output will look 
+   like:
+
+   <PRE
+CLASS="screen"
+>&#13;<TT
+CLASS="computeroutput"
+>&#13;--- TEST RESULTS -------------------------------------------------------------
+
+  exec0                                         : PASS    
+
+  exec1                                         : XFAIL   
+    Expression evaluates to false.
+
+    ExecTest.expr:
+      x + x == 5
+
+    ExecTest.value:
+      0
+
+    qmtest.target:
+      local
+
+  exec2                                         : PASS    
+
+--- TESTS WITH UNEXPECTED OUTCOMES -------------------------------------------
+
+  None.
+
+
+--- STATISTICS ---------------------------------------------------------------
+
+       3        tests total
+       3 (100%) tests as expected
+
+</TT
+></PRE
+>
+
+   Note that <SPAN
+CLASS="application"
+>QMTest</SPAN
+> indicates that there were no tests with
+   unexpected outcomes, even though <TT
+CLASS="filename"
+>exec1</TT
+> still
+   fails.  The <TT
+CLASS="literal"
+>XFAIL</TT
+> notation indicates that the
+   test failed, but that failure was expected.  In contrast,
+   <TT
+CLASS="literal"
+>XPASS</TT
+> means that a test passed
+   unexpectedly.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-testtut-cmdline.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-testtut-results.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Using the Command-Line Interface</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-tour.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Reviewing Results</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

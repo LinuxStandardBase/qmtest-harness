@@ -1,0 +1,511 @@
+<HTML
+><HEAD
+><TITLE
+>Test and Resource Classes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="QMTest: User's Guide and Reference"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Using QMTest"
+HREF="chap-test-manual.html"><LINK
+REL="PREVIOUS"
+TITLE="Invoking QMTest"
+HREF="sec-test-command-line.html"><LINK
+REL="NEXT"
+TITLE="Test Targets"
+HREF="sec-ref-targets.html"><LINK
+REL="STYLESHEET"
+TYPE="text/css"
+HREF="qm.css"></HEAD
+><BODY
+CLASS="section"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>QMTest: User's Guide and Reference</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sec-test-command-line.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Using <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sec-ref-targets.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="section"
+><H1
+CLASS="section"
+><A
+NAME="sec-ref-classes"
+></A
+>3.5. Test and Resource Classes</H1
+><P
+>This section describes test classes and resource classes
+  included with <SPAN
+CLASS="application"
+>QMTest</SPAN
+>.  <A
+HREF="sec-writing-test-classes.html"
+>Section 4.3</A
+>
+  provides instructions for writing your own test classes, <A
+HREF="sec-writing-resource-classes.html"
+>Section 4.4</A
+> for resource classes.</P
+><DIV
+CLASS="section"
+><H2
+CLASS="section"
+><A
+NAME="sec-ref-test-classes"
+></A
+>3.5.1. Test Classes</H2
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-exectest"
+></A
+>3.5.1.1. <TT
+CLASS="classname"
+>command.ExecTest</TT
+></H3
+><P
+>The <TT
+CLASS="classname"
+>command.ExecTest</TT
+> test class runs a
+    program from an ordinary executable file.  Each test specifies the
+    program executable to run, its full command line, and the data to
+    feed to its standard input stream.  <TT
+CLASS="classname"
+>ExecTest</TT
+>
+    collects the complete text of the program's standard output and
+    standard error streams and the program's exit code, and compares
+    these to expected values specified in the test.  If the standard
+    output and error text and the exit code match the expected values,
+    the test passes.</P
+><P
+>A <TT
+CLASS="classname"
+>command.ExecTest</TT
+> test supplies the
+    following arguments:</P
+><DIV
+CLASS="glosslist"
+><DL
+><DT
+><B
+><SPAN
+CLASS="property"
+>Program</SPAN
+> (text field)</B
+></DT
+><DD
+><P
+>The name of the executable file to run.
+       <TT
+CLASS="classname"
+>command.ExecTest</TT
+> attempts to locate the
+       program executable in the path specified by the
+       <SPAN
+CLASS="property"
+>path</SPAN
+> property of the test context.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Argument List</SPAN
+> (set of strings)</B
+></DT
+><DD
+><P
+>The argument list for the program.  The elements of this
+       set are sequential items from which the program's argument list
+       is constructed.  <TT
+CLASS="classname"
+>command.ExecTest</TT
+>
+       automatically prepends an implicit zeroth element, the full path
+       of the program.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Standard Input</SPAN
+> (text
+      field)</B
+></DT
+><DD
+><P
+>Text or data to pass to the program's standard input
+       stream.  This data is written to a temporary file, and the
+       contents of the file are directed to the program's standard
+       input stream.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Environment</SPAN
+> (set of strings)</B
+></DT
+><DD
+><P
+>The environment (i.e. the set of environment variables)
+       available to the executing program.  Each element of this
+       argument is a string of the form
+       "<TT
+CLASS="replaceable"
+><I
+>VARIABLE</I
+></TT
+>=<TT
+CLASS="replaceable"
+><I
+>VALUE</I
+></TT
+>".</P
+><P
+><TT
+CLASS="classname"
+>command.ExecTest</TT
+> adds additional
+       environment variables automatically.</P
+><P
+>In addition, every context property whose value is a string
+       is accessible as an environment variable; the name of the
+       environment variable is the name of the context property,
+       prefixed with "<TT
+CLASS="envar"
+>QMV_</TT
+>" and with any dots
+       (".") replaced by a double underscore
+       ("__").  For example, the value of the context property
+       "CompilerTable.c_path" is available as the value of the
+       environment variable
+       "<TT
+CLASS="envar"
+>QMV_CompilerTable__c_path</TT
+>".</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Expected Exit Code</SPAN
+> (integer
+      field)</B
+></DT
+><DD
+><P
+>The exit code value expected from the program.  If the
+       program produces an exit code value different from this one, the
+       test fails.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Expected Standard Output</SPAN
+>
+      (text field)</B
+></DT
+><DD
+><P
+>The text or data which the program is expected to produce
+       on its standard output stream.  The actual text or data written
+       to standard output is captured, and
+       <TT
+CLASS="classname"
+>command.ExecTest</TT
+> performs a bytewise
+       comparison to the expected text or data.  If they do not match,
+       the test fails.</P
+></DD
+><DT
+><B
+><SPAN
+CLASS="property"
+>Expected Standard Error</SPAN
+>
+      (text field)</B
+></DT
+><DD
+><P
+>The text or data which the program is expected to produce
+       on its standard error stream.  The actual text or data written to
+       standard error is captured, and
+       <TT
+CLASS="classname"
+>command.ExecTest</TT
+> performs a bytewise
+       comparison to the expected text or data.  If they do not match,
+       the test fails.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-commandtest"
+></A
+>3.5.1.2. <TT
+CLASS="classname"
+>command.ShellCommandTest</TT
+></H3
+><P
+><TT
+CLASS="classname"
+>command.ShellCommandTest</TT
+> is very
+    similar to <TT
+CLASS="classname"
+>command.ExecTest</TT
+>, except that it
+    runs a program via the shell rather than directly.  Instead of
+    specifying an executable to run and the elements of its argument
+    list, a test provides a single command line.  The shell is
+    responsible for finding the executable and constructing its
+    argument list.</P
+><P
+>Standard input and the environment are specified in the test.
+    The test passes if the command produces the expected standard
+    output, standard error, and exit code.</P
+><P
+>Note that most shells create local shell variables to mirror
+    the contents of the environment when the shell starts up.
+    Therefore, the environment set up by a
+    <TT
+CLASS="classname"
+>command.ShellCommandTest</TT
+>, including the contents
+    of the test context, are directly accessible via shell variables.
+    The syntax to use depends on the particular shell.</P
+><P
+><TT
+CLASS="classname"
+>command.ShellCommandTest</TT
+> has the same fields
+    as <TT
+CLASS="classname"
+>command.ExecTest</TT
+>, except that the
+    <SPAN
+CLASS="property"
+>Program</SPAN
+> and <SPAN
+CLASS="property"
+>Argument List</SPAN
+>
+    properties are replaced with these:</P
+><DIV
+CLASS="glosslist"
+><DL
+><DT
+><B
+><SPAN
+CLASS="property"
+>Command</SPAN
+> (text field)</B
+></DT
+><DD
+><P
+>The command to run.  The command is delivered verbatim to
+       the shell.  The shell interprets the command according to its own
+       quoting rules and syntax.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="section"
+><H3
+CLASS="section"
+><A
+NAME="sec-scripttest"
+></A
+>3.5.1.3. <TT
+CLASS="classname"
+>command.ShellScriptTest</TT
+></H3
+><P
+><TT
+CLASS="classname"
+>command.ShellScriptTest</TT
+> is an extension of
+    <TT
+CLASS="classname"
+>command.CommandTest</TT
+> that lets a test specify
+    an entire shell script instead of a single command.  The script
+    specified in the test is written to a temporary file, and this file
+    is interpreted by the specified shell or command interpreter
+    program.</P
+><P
+>Standard input, the environment, and the argument list to pass
+    to the script are specified in the test.  The test passes if the
+    script produces the expected standard output, standard error, and
+    exit code.</P
+><P
+>Note that most shells create local shell variables to mirror
+    the contents of the environment when the shell starts up.
+    Therefore, the environment set up by a
+    <TT
+CLASS="classname"
+>command.ShellScriptTest</TT
+>, including the contents of
+    the test context, are directly accessible via shell variables.  The
+    syntax to use depends on the particular shell.</P
+><P
+><TT
+CLASS="classname"
+>command.ShellScriptTest</TT
+> has the same fields
+    as <TT
+CLASS="classname"
+>command.ExecTest</TT
+>, except that the
+    <SPAN
+CLASS="property"
+>Program</SPAN
+> property is replaced with:</P
+><DIV
+CLASS="glosslist"
+><DL
+><DT
+><B
+><SPAN
+CLASS="property"
+>Script</SPAN
+> (text field)</B
+></DT
+><DD
+><P
+>The text of the script to run.</P
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sec-test-command-line.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sec-ref-targets.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Invoking <SPAN
+CLASS="application"
+>QMTest</SPAN
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="chap-test-manual.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Test Targets</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
