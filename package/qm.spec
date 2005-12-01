@@ -1,6 +1,6 @@
 %define name qm
 %define version 2.2
-%define release 2
+%define release 3
 
 Summary: QMTest is an automated software test execution tool.
 Name: %{name}
@@ -20,7 +20,8 @@ AutoReqProv: no
 
 
 %description
-UNKNOWN
+QMTest is a cost-effective general purpose testing solution that can be
+used to implement a robust, easy-to-use testing process.
 
 %prep
 %setup
