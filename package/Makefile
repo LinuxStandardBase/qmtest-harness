@@ -2,7 +2,7 @@
 # XXX a specfile from this info, but not yet: for now keep in sync
 PACKAGE=qm
 VERSION=2.2
-RELEASE=2
+RELEASE=3
 #
 # Derive date string for daily snapshots
 ISO_DATE=$(shell date +"%Y%m%d")
