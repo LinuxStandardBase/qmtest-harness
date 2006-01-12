@@ -1,3 +1,423 @@
+2006-01-12	Rui Feng <fengrui_at_cn.ibm.com>
+	* package/qm.spec
+	   correct the setting of License and clean section
+
+2005-12-01	Marvin Heffler <heffler_at_us.ibm.com>
+	* package/qm.spec
+	  package/Makefile
+	   add description entry to qm spec file so it will show up on
+	   download page; also increment the release number for the package
+
+2005-04-01	Mats Wichmann <mats.d.wichmann_at_intel.com>
+	* package/qm.spec
+	  package/Makefile
+	   Have to bump version in makefile, too
+
+2005-03-30	Rui Feng <fengrui_at_cn.ibm.com>
+	* package/rpmrc
+	  package/qm.spec
+	   Change the install location of test harness from /opt/lsb/appbat
+	   to /opt/lsb/appbat
+
+2005-03-10	Mats Wichmann <mats.d.wichmann_at_intel.com>
+	* package/rpmmacros
+	   Force gzip payload for rpms
+
+2005-02-22	Mats Wichmann <mats.d.wichmann_at_intel.com>
+	* qm/web.py
+	  qm/external/DocumentTemplate/DT_Util.py
+	   Change uses of whrandom to random for Python 2.4 These changes
+	   match ones in the upstream cvs
+
+2004-07-26	Marvin Heffler <heffler_at_us.ibm.com>
+	* package/rpmrc
+	   add build translate for ppc64iseries
+
+2004-06-25	Mats Wichmann <mats.d.wichmann_at_intel.com>
+	* package/qm.spec
+	   Sort-of-buildable package
+
+2004-06-22	Mats Wichmann <mats.d.wichmann_at_intel.com>
+	* tests/xmldb/test.qms/classes.qms/tempdir1.qmt
+	  COPYING
+	  GNUmakefile.in
+	  MANIFEST.in
+	  PKG-INFO
+	  README
+	  benchmarks/throughput/QMTest/classes.qmc
+	  benchmarks/throughput/QMTest/configuration
+	  benchmarks/throughput/QMTest/throughput.py
+	  configure
+	  configure.in
+	  doc/.cvsignore
+	  doc/design/qmtest/.cvsignore
+	  doc/design/qmtest/Makefile.in
+	  doc/design/qmtest/core.xml
+	  doc/design/qmtest/iface.xml
+	  doc/design/qmtest/impl.xml
+	  doc/design/qmtest/qmtest.xml
+	  doc/design/qmtest/refs.xml
+	  doc/design/qmtest/req.xml
+	  doc/design/qmtest/test.dtd
+	  doc/manual/.cvsignore
+	  doc/manual/common-manual.xml
+	  doc/process-xhtml.py
+	  doc/qm-opl.xml
+	  doc/qm-sgml.dsl
+	  doc/qm-tex.dsl
+	  doc/qm-version
+	  doc/qm.css
+	  doc/qm.mod
+	  package/Makefile
+	  package/qm.spec
+	  package/rpmmacros
+	  package/rpmrc
+	  qm/__init__.py
+	  qm/__version.py
+	  qm/attachment.py
+	  qm/cmdline.py
+	  qm/common.py
+	  qm/db.py
+	  qm/diagnostic.py
+	  qm/executable.py
+	  qm/extension.py
+	  qm/external/DocumentTemplate/DT_HTML.py
+	  qm/external/DocumentTemplate/DT_If.py
+	  qm/external/DocumentTemplate/DT_In.py
+	  qm/external/DocumentTemplate/DT_InSV.py
+	  qm/external/DocumentTemplate/DT_Let.py
+	  qm/external/DocumentTemplate/DT_Raise.py
+	  qm/external/DocumentTemplate/DT_Return.py
+	  qm/external/DocumentTemplate/DT_String.py
+	  qm/external/DocumentTemplate/DT_Try.py
+	  qm/external/DocumentTemplate/DT_UI.py
+	  qm/external/DocumentTemplate/DT_Util.py
+	  qm/external/DocumentTemplate/DT_Var.py
+	  qm/external/DocumentTemplate/DT_With.py
+	  qm/external/DocumentTemplate/DTtest.py
+	  qm/external/DocumentTemplate/DTtestExpr.py
+	  qm/external/DocumentTemplate/DTtest_basicIn.py
+	  qm/external/DocumentTemplate/DocumentTemplate.py
+	  qm/external/DocumentTemplate/VSEval.py
+	  qm/external/DocumentTemplate/__init__.py
+	  qm/external/DocumentTemplate/gparse.py
+	  qm/external/DocumentTemplate/gparse_test.py
+	  qm/external/DocumentTemplate/pDocumentTemplate.py
+	  qm/external/DocumentTemplate/setup.py
+	  qm/external/DocumentTemplate/ts_regex.py
+	  qm/external/__init__.py
+	  qm/fields.py
+	  qm/label.py
+	  qm/lock.py
+	  qm/platform.py
+	  qm/platform_unix.py
+	  qm/platform_win32.py
+	  qm/queue.py
+	  qm/setup.py
+	  qm/sigmask.c
+	  qm/structured_text.py
+	  qm/temporary_directory.py
+	  qm/test/__init__.py
+	  qm/test/base.py
+	  qm/test/classes/__init__.py
+	  qm/test/classes/classes.qmc
+	  qm/test/classes/command.py
+	  qm/test/classes/dejagnu_base.py
+	  qm/test/classes/dejagnu_stream.py
+	  qm/test/classes/dejagnu_test.py
+	  qm/test/classes/dg_test.py
+	  qm/test/classes/explicit_suite.py
+	  qm/test/classes/file.py
+	  qm/test/classes/file_label.py
+	  qm/test/classes/mount_database.py
+	  qm/test/classes/pickle_result_stream.py
+	  qm/test/classes/process_target.py
+	  qm/test/classes/python.py
+	  qm/test/classes/python_label.py
+	  qm/test/classes/rsh_target.py
+	  qm/test/classes/serial_target.py
+	  qm/test/classes/sql_result_stream.py
+	  qm/test/classes/temporary.py
+	  qm/test/classes/tet_stream.py
+	  qm/test/classes/text_result_stream.py
+	  qm/test/classes/thread_target.py
+	  qm/test/classes/xml_database.py
+	  qm/test/classes/xml_result_stream.py
+	  qm/test/cmdline.py
+	  qm/test/command_thread.py
+	  qm/test/context.py
+	  qm/test/database.py
+	  qm/test/directory_suite.py
+	  qm/test/doc/html/chap-common-manual.html
+	  qm/test/doc/html/chap-introduction.html
+	  qm/test/doc/html/chap-test-extension.html
+	  qm/test/doc/html/chap-test-manual.html
+	  qm/test/doc/html/chap-test-tour.html
+	  qm/test/doc/html/index.html
+	  qm/test/doc/html/ln8.html
+	  qm/test/doc/html/qm.css
+	  qm/test/doc/html/sec-database-contents.html
+	  qm/test/doc/html/sec-extension-classes.html
+	  qm/test/doc/html/sec-field-classes.html
+	  qm/test/doc/html/sec-qmtest-concepts.html
+	  qm/test/doc/html/sec-rc-common.html
+	  qm/test/doc/html/sec-ref-classes.html
+	  qm/test/doc/html/sec-ref-targets.html
+	  qm/test/doc/html/sec-ref-writing-database-classes.html
+	  qm/test/doc/html/sec-registering-extension-class.html
+	  qm/test/doc/html/sec-running-tests.html
+	  qm/test/doc/html/sec-test-command-line.html
+	  qm/test/doc/html/sec-testtut-cmdline.html
+	  qm/test/doc/html/sec-testtut-examining.html
+	  qm/test/doc/html/sec-testtut-expectations.html
+	  qm/test/doc/html/sec-testtut-expected-outcomes.html
+	  qm/test/doc/html/sec-testtut-gui.html
+	  qm/test/doc/html/sec-testtut-modifying.html
+	  qm/test/doc/html/sec-testtut-results.html
+	  qm/test/doc/html/sec-testtut-running-tests.html
+	  qm/test/doc/html/sec-testtut-setting-up.html
+	  qm/test/doc/html/sec-writing-resource-classes.html
+	  qm/test/doc/html/sec-writing-test-classes.html
+	  qm/test/doc/introduction.xml
+	  qm/test/doc/manual.xml
+	  qm/test/doc/print/manual.pdf
+	  qm/test/doc/reference.xml
+	  qm/test/doc/tour.xml
+	  qm/test/execution_engine.py
+	  qm/test/execution_thread.py
+	  qm/test/file_database.py
+	  qm/test/file_result_reader.py
+	  qm/test/file_result_stream.py
+	  qm/test/qmtest
+	  qm/test/qmtest.py
+	  qm/test/resource.py
+	  qm/test/result.py
+	  qm/test/result_reader.py
+	  qm/test/result_stream.py
+	  qm/test/runnable.py
+	  qm/test/share/dtds/class-directory.dtd
+	  qm/test/share/dtds/result.dtd
+	  qm/test/share/dtds/suite.dtd
+	  qm/test/share/dtml/context.dtml
+	  qm/test/share/dtml/dir.dtml
+	  qm/test/share/dtml/expectations.dtml
+	  qm/test/share/dtml/load.dtml
+	  qm/test/share/dtml/navigation-bar.dtml
+	  qm/test/share/dtml/new-suite.dtml
+	  qm/test/share/dtml/new.dtml
+	  qm/test/share/dtml/result.dtml
+	  qm/test/share/dtml/results.dtml
+	  qm/test/share/dtml/set-expectation.dtml
+	  qm/test/share/dtml/show.dtml
+	  qm/test/share/dtml/suite.dtml
+	  qm/test/share/messages/diagnostics.txt
+	  qm/test/share/messages/help.txt
+	  qm/test/share/tutorial/tdb/QMTest/configuration
+	  qm/test/share/tutorial/tdb/exec0.qmt
+	  qm/test/share/tutorial/tdb/exec1.qmt
+	  qm/test/share/tutorial/tdb/exec2.qmt
+	  qm/test/suite.py
+	  qm/test/target.py
+	  qm/test/test.py
+	  qm/test/web/__init__.py
+	  qm/test/web/web.py
+	  qm/trace.py
+	  qm/user.py
+	  qm/web.py
+	  qm/xmlutil.py
+	  qmdist/.cvsignore
+	  qmdist/__init__.py
+	  qmdist/command/.cvsignore
+	  qmdist/command/__init__.py
+	  qmdist/command/build.py
+	  qmdist/command/build_doc.py
+	  qmdist/command/check.py
+	  qmdist/command/install_data.py
+	  qmdist/command/install_lib.py
+	  qmdist/command/install_scripts.py
+	  scripts/.cvsignore
+	  scripts/create-results-database.py
+	  setup.py
+	  share/diagnostics/common-help.txt
+	  share/diagnostics/common.txt
+	  share/dtml/add-enumeral.dtml
+	  share/dtml/attachment.dtml
+	  share/dtml/error.dtml
+	  share/dtml/exception.dtml
+	  share/dtml/field.dtml
+	  share/dtml/help.dtml
+	  share/dtml/login_form.dtml
+	  share/dtml/problems.dtml
+	  share/dtml/set.dtml
+	  share/dtml/user.dtml
+	  share/web/common.js
+	  share/web/images/clear.gif
+	  share/web/images/left-arrow.gif
+	  share/web/images/logo.gif
+	  share/web/images/right-arrow.gif
+	  share/web/stylesheets/qm.css
+	  share/xml/.cvsignore
+	  share/xml/fields.mod
+	  templates/Makefile
+	  templates/docbook
+	  templates/docbook-chapter
+	  templates/dtml
+	  templates/html
+	  templates/py
+	  templates/xml
+	  tests/.cvsignore
+	  tests/QMTest/.cvsignore
+	  tests/QMTest/classes.qmc
+	  tests/QMTest/configuration
+	  tests/regress/QMTest/classes.qmc
+	  tests/regress/QMTest/configuration
+	  tests/regress/QMTest/regression_database.py
+	  tests/regress/QMTest/selftest.py
+	  tests/regress/attachment1/QMTest/.cvsignore
+	  tests/regress/attachment1/QMTest/attachment_test.py
+	  tests/regress/attachment1/QMTest/classes.qmc
+	  tests/regress/attachment1/QMTest/configuration
+	  tests/regress/attachment1/attachment1
+	  tests/regress/attachment1/results.qmr
+	  tests/regress/attachment1/test1.qmt
+	  tests/regress/bad_target1/QMTest/configuration
+	  tests/regress/bad_target1/a.qmt
+	  tests/regress/bad_target1/bad_target.qmt
+	  tests/regress/bad_target1/results.qmr
+	  tests/regress/bad_target2/QMTest/configuration
+	  tests/regress/bad_target2/a.qmt
+	  tests/regress/bad_target2/bad_target.qmt
+	  tests/regress/bad_target2/results.qmr
+	  tests/regress/cycle1/QMTest/configuration
+	  tests/regress/cycle1/a.qmt
+	  tests/regress/cycle1/b.qmt
+	  tests/regress/cycle1/results.qmr
+	  tests/regress/cycle2/QMTest/configuration
+	  tests/regress/cycle2/a.qmt
+	  tests/regress/cycle2/b.qmt
+	  tests/regress/cycle2/c.qmt
+	  tests/regress/cycle2/results.qmr
+	  tests/regress/cycle3/QMTest/configuration
+	  tests/regress/cycle3/a.qmt
+	  tests/regress/cycle3/b.qmt
+	  tests/regress/cycle3/c.qmt
+	  tests/regress/cycle3/results.qmr
+	  tests/regress/cycle4/QMTest/configuration
+	  tests/regress/cycle4/a.qmt
+	  tests/regress/cycle4/b.qmt
+	  tests/regress/cycle4/c.qmt
+	  tests/regress/cycle4/d.qmt
+	  tests/regress/cycle4/e.qmt
+	  tests/regress/cycle4/f.qmt
+	  tests/regress/cycle4/results.qmr
+	  tests/regress/cycle5/QMTest/configuration
+	  tests/regress/cycle5/a.qmt
+	  tests/regress/cycle5/b.qmt
+	  tests/regress/cycle5/results.qmr
+	  tests/regress/env_context1/QMTest/configuration
+	  tests/regress/env_context1/context
+	  tests/regress/env_context1/exectest_dot.qmt
+	  tests/regress/env_context1/exectest_nodot.qmt
+	  tests/regress/env_context1/results.qmr
+	  tests/regress/env_context1/shellcommandtest_dot.qmt
+	  tests/regress/env_context1/shellcommandtest_nodot.qmt
+	  tests/regress/env_context1/shellscripttest_dot.qmt
+	  tests/regress/env_context1/shellscripttest_nodot.qmt
+	  tests/regress/exception_test/QMTest/configuration
+	  tests/regress/exception_test/arg1.qmt
+	  tests/regress/exception_test/results.qmr
+	  tests/regress/gilles1/QMTest/configuration
+	  tests/regress/gilles1/a.qmt
+	  tests/regress/gilles1/b.qmt
+	  tests/regress/gilles1/c.qmt
+	  tests/regress/gilles1/results.qmr
+	  tests/regress/nocycle1/QMTest/configuration
+	  tests/regress/nocycle1/a.qmt
+	  tests/regress/nocycle1/b.qmt
+	  tests/regress/nocycle1/c.qmt
+	  tests/regress/nocycle1/d.qmt
+	  tests/regress/nocycle1/e.qmt
+	  tests/regress/nocycle1/results.qmr
+	  tests/regress/nocycle2/QMTest/configuration
+	  tests/regress/nocycle2/a.qmt
+	  tests/regress/nocycle2/b.qmt
+	  tests/regress/nocycle2/c.qmt
+	  tests/regress/nocycle2/results.qmr
+	  tests/regress/noresource/QMTest/configuration
+	  tests/regress/noresource/results.qmr
+	  tests/regress/noresource/test.qmt
+	  tests/regress/noresource/test2.qmt
+	  tests/regress/resource_ordering/QMTest/classes.qmc
+	  tests/regress/resource_ordering/QMTest/configuration
+	  tests/regress/resource_ordering/QMTest/dependency_checking_resource.py
+	  tests/regress/resource_ordering/a.qma
+	  tests/regress/resource_ordering/b.qma
+	  tests/regress/resource_ordering/c.qma
+	  tests/regress/resource_ordering/d.qma
+	  tests/regress/resource_ordering/e.qma
+	  tests/regress/resource_ordering/f.qma
+	  tests/regress/resource_ordering/foo.qmt
+	  tests/regress/resource_ordering/g.qma
+	  tests/regress/resource_ordering/h.qma
+	  tests/regress/resource_ordering/results.qmr
+	  tests/regress/tuple1/QMTest/classes.qmc
+	  tests/regress/tuple1/QMTest/configuration
+	  tests/regress/tuple1/QMTest/tuple_test.py
+	  tests/regress/tuple1/results.qmr
+	  tests/regress/tuple1/tuple1.qmt
+	  tests/regress/xml1/QMTest/configuration
+	  tests/regress/xml1/asdfasdf.qmt
+	  tests/regress/xml1/fnord.qmt
+	  tests/regress/xml1/results.qmr
+	  tests/results_files/QMTest/classes.qmc
+	  tests/results_files/QMTest/configuration
+	  tests/results_files/QMTest/results_file_database.py
+	  tests/results_files/QMTest/results_file_test.py
+	  tests/results_files/README
+	  tests/results_files/result_class_v0-file_format_v0-pickling_format_v0.qmr
+	  tests/results_files/result_class_v1-file_format_v0-pickling_format_v0.qmr
+	  tests/results_files/result_class_v1-file_format_v1-pickling_format_v0.qmr
+	  tests/results_files/result_class_v1-file_format_v1-pickling_format_v1.qmr
+	  tests/results_files/tdb/QMTest/configuration
+	  tests/results_files/tdb/error.qmt
+	  tests/results_files/tdb/fail.qmt
+	  tests/results_files/tdb/fail_with_tmpdir.qmt
+	  tests/results_files/tdb/pass.qmt
+	  tests/results_files/tdb/tmpdir_resource.qma
+	  tests/results_files/tdb/untested.qmt
+	  tests/results_files/xml_results.qmr
+	  tests/results_files/xml_results_v2.qmr
+	  tests/results_files/xml_results_v3.qmr
+	  tests/xmldb/.cvsignore
+	  tests/xmldb/QMTest/.cvsignore
+	  tests/xmldb/QMTest/classes.qmc
+	  tests/xmldb/QMTest/configuration
+	  tests/xmldb/QMTest/test_inheritance.py
+	  tests/xmldb/QMTest/test_interface.py
+	  tests/xmldb/api.qms/test.qms/derived.qmt
+	  tests/xmldb/api.qms/test.qms/test_interface.qmt
+	  tests/xmldb/common.qms/format_time1.qmt
+	  tests/xmldb/common.qms/label_is_valid.qmt
+	  tests/xmldb/common.qms/label_thunk.qmt
+	  tests/xmldb/common.qms/parse_time1.qmt
+	  tests/xmldb/common.qms/parse_time2.qmt
+	  tests/xmldb/common.qms/parse_time3.qmt
+	  tests/xmldb/common.qms/parse_time4.qmt
+	  tests/xmldb/common.qms/parser_create.qmt
+	  tests/xmldb/common.qms/parser_dup_command_long.qmt
+	  tests/xmldb/common.qms/parser_dup_command_short.qmt
+	  tests/xmldb/common.qms/parser_help.qmt
+	  tests/xmldb/common.qms/parser_no_long.qmt
+	  tests/xmldb/common.qms/parser_parse.qmt
+	  tests/xmldb/common.qms/parser_two_char_short.qmt
+	  tests/xmldb/signals_unblocked.qmt
+	  tests/xmldb/signals_unblocked_tmpdir.qma
+	  tests/xmldb/test.qms/classes.qms/scripttest1.qmt
+	  tests/xmldb/test.qms/classes.qms/scripttest_closes_stdin.qmt
+	  tests/xmldb/test.qms/classes.qms/tempdir1.qma
+	  tests/xmldb/test.qms/classes.qms/tempdir1.qmt
+	   branches:  1.1.1; Initial revision
+
 2004-05-27  Mark Mitchell  <mark@codesourcery.com>
 
 	* qm/test/qmtest (check_python_version): Rework to avoid using
@@ -10275,3 +10695,4 @@ g
 
 	* templates: New directory.
 	* doc: Likewise.
+1137057041
