@@ -7,7 +7,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.gz
-Copyright: GPL
+License: GPL
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-buildroot
 Prefix: %{_prefix}
@@ -34,7 +34,11 @@ env CFLAGS="$RPM_OPT_FLAGS" /opt/lsb/appbat/bin/python setup.py build
 /opt/lsb/appbat/bin/python setup.py install --root=$RPM_BUILD_ROOT --install-data=/opt/lsb/test --record=INSTALLED_FILES
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+# uncomment later. leave in now for speed
+if [ -e "${RPM_BUILD_ROOT}"  -a "${RPM_BUILD_ROOT}" != "/" ]; then 
+    rm -rf ${RPM_BUILD_ROOT}
+fi
+
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
