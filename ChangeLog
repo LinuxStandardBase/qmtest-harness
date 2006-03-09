@@ -1,3 +1,8 @@
+2006-01-26	Marvin Heffler <heffler_at_us.ibm.com>
+	* package/rpmrc
+	   add archtranslate entries for some systems that return pentium3
+	   or pentium4 for the architecture
+
 2006-01-12	Rui Feng <fengrui_at_cn.ibm.com>
 	* package/qm.spec
 	   correct the setting of License and clean section
@@ -10695,4 +10700,4 @@ g
 
 	* templates: New directory.
 	* doc: Likewise.
-1137057041
+1141870347
