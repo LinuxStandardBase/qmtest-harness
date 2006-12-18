@@ -44,8 +44,9 @@ RPM_BUILD_ARCH=$(shell rpm --rcfile ${RCFILELIST} --eval=%{_target_cpu})
 RPM_BINARY_DIR=$(RPM_TMP_BUILD_DIR)/RPMS/$(RPM_BUILD_ARCH)
 RPM_SRPM_DIR=$(RPM_TMP_BUILD_DIR)/SRPMS
 
-# Set default CVSROOT for export
-export CVSROOT=:pserver:anonymous@cvs.gforge.freestandards.org:/cvsroot/lsb
+# Override this on the command line to use a different repo
+BZRTREES?=http://bzr.freestandards.org/lsb/3.1
+BZR_MODULE=qmtest-harness
 
 # Default target
 all: rpm_package
@@ -68,9 +69,6 @@ endif
 	@rm -rf $(RPM_TMP_BUILD_DIR)
 
 $(TARBALL):
-	if [ -e $(TMP_BUILD_DIR) ]; then rm -rf $(TMP_BUILD_DIR); fi
-	mkdir -p $(TMP_BUILD_DIR)
-	( cd $(TMP_BUILD_DIR) ; cvs -z9 export $(EXPORT_TAG) tests/qm && mv tests/qm $(FULL_PACKAGE_NAME) && tar cvfz $(PWD)/$(TARBALL) $(FULL_PACKAGE_NAME) )
-	rm -rf $(TMP_BUILD_DIR)
+	bzr export $(TARBALL) $(BZRTREES)/$(BZR_MODULE)
 
 .PHONY : tarball rpm_package
