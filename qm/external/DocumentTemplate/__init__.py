@@ -87,8 +87,8 @@ __doc__='''Package wrapper for Document Template
 This wrapper allows the (now many) document template modules to be
 segregated in a separate package.
 
-$Id: __init__.py,v 1.1.1.1 2004/06/22 05:16:00 mats Exp $'''
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+$Id$'''
+__version__='$Revision$'[11:-2]
 
 try:
     import ExtensionClass # work-around for import bug.

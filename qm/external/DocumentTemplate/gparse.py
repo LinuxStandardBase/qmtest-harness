@@ -82,7 +82,7 @@
 # attributions are listed in the accompanying credits file.
 # 
 ##############################################################################
-"$Id: gparse.py,v 1.1.1.1 2004/06/22 05:16:02 mats Exp $"
+"$Id$"
 import sys, parser, symbol, token
 
 from symbol import test, suite, argument, arith_expr, shift_expr

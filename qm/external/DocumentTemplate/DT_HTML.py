@@ -84,7 +84,7 @@
 ##############################################################################
 """HTML formated DocumentTemplates
 
-$Id: DT_HTML.py,v 1.1.1.1 2004/06/22 05:14:49 mats Exp $"""
+$Id$"""
 
 from DT_String import String, FileMixin
 import DT_String, regex
