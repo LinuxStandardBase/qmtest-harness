@@ -85,8 +85,8 @@
 """Document Template Tests
 """
 
-__rcs_id__='$Id: DTtest.py,v 1.1.1.1 2004/06/22 05:15:49 mats Exp $'
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+__rcs_id__='$Id$'
+__version__='$Revision$'[11:-2]
 
 from DocumentTemplate import *
 import sys

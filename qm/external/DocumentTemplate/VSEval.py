@@ -84,8 +84,8 @@
 ##############################################################################
 """Very Safe Python Expressions
 """
-__rcs_id__='$Id: VSEval.py,v 1.1.1.1 2004/06/22 05:15:56 mats Exp $'
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+__rcs_id__='$Id$'
+__version__='$Revision$'[11:-2]
 
 from string import translate, strip
 import string

@@ -85,8 +85,8 @@
 __doc__='''Sequence variables support
 
 
-$Id: DT_InSV.py,v 1.1.1.1 2004/06/22 05:15:08 mats Exp $'''
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+$Id$'''
+__version__='$Revision$'[11:-2]
 
 from string import lower, rfind, split, join
 from math import sqrt

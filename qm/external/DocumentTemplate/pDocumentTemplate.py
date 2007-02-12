@@ -85,8 +85,8 @@
 __doc__='''Python implementations of document template some features
 
 
-$Id: pDocumentTemplate.py,v 1.1.1.1 2004/06/22 05:16:10 mats Exp $'''
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+$Id$'''
+__version__='$Revision$'[11:-2]
 
 import string, sys, types
 from string import join
