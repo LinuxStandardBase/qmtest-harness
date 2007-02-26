@@ -1,6 +1,6 @@
 %define name qm
 %define version 2.2
-%define release 3
+%define release 4
 
 Summary: QMTest is an automated software test execution tool.
 Name: %{name}
@@ -10,7 +10,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-buildroot
-Prefix: %{_prefix}
+#Prefix: %{_prefix}
 Vendor: Mark Mitchell <mark@codesourcery.com>
 Packager: LSB Test Team <lsb-test@freestandards.org>
 Url: http://www.codesourcery.com/qm/test
