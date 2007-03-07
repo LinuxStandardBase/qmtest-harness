@@ -2,7 +2,9 @@
 # XXX a specfile from this info, but not yet: for now keep in sync
 PACKAGE=qm
 VERSION=2.2
-RELEASE=4
+LSBSpec=3.1
+LSBRelease=3
+RELEASE=5
 #
 # Derive date string for daily snapshots
 ISO_DATE=$(shell date +"%Y%m%d")
@@ -10,8 +12,9 @@ PWD=$(shell pwd)
 
 FULL_PACKAGE_NAME=$(PACKAGE)-$(VERSION)
 TARBALL=$(FULL_PACKAGE_NAME).tar.gz
-RPM_BINARY_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).$(RPM_BUILD_ARCH).rpm
-RPM_SOURCE_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).src.rpm
+RPM_BINARY_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).$(RPM_BUILD_ARCH).rpm
+RPM_SOURCE_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).src.rpm
+
 
 # Temporary build directory
 TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
@@ -21,10 +24,10 @@ TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
 ifdef OFFICIAL_RELEASE
 VERSION_SUFFIX=
 # EXPORT_TAG should be set to the cvs tag to use
-EXPORT_TAG=-r $(OFFICIAL_RELEASE)
+EXPORT_TAG=--revision=otag:$(OFFICIAL_RELEASE)
 else
 VERSION_SUFFIX=.$(ISO_DATE)
-EXPORT_TAG=-D now
+EXPORT_TAG=
 endif
 
 # Determine whether to use rpm or rpmbuild to build the packages
@@ -60,15 +63,15 @@ $(RPM_BINARY_NAME) $(RPM_SOURCE_NAME): $(PACKAGE).spec $(TARBALL)
 	@mkdir -p $(RPM_TMP_BUILD_DIR)/RPMS
 	@mkdir -p $(RPM_TMP_BUILD_DIR)/SRPMS
 ifdef SIGN_PACKAGES
-	@expect -c 'set timeout -1' -c 'spawn $(RPM_BUILD_CMD) --sign --rcfile ${RCFILELIST} --define=_sourcedir\ $(PWD) --define=_topdir\ $(RPM_TMP_BUILD_DIR) --define=_target_cpu\ $(RPM_BUILD_ARCH) -ba $(PACKAGE).spec' -c 'expect -ex "Enter pass phrase:"' -c 'send "\n"' -c 'expect "Executing(%clean)"' -c 'expect "exit 0"' -c 'send "\n"'
+	@expect -c 'set timeout -1' -c 'spawn $(RPM_BUILD_CMD) --sign --rcfile ${RCFILELIST} --define=_sourcedir\ $(PWD) --define=_topdir\ $(RPM_TMP_BUILD_DIR) --define=_target_cpu\ $(RPM_BUILD_ARCH) --define=rel\ $(RELEASE) -ba $(PACKAGE).spec' -c 'expect -ex "Enter pass phrase:"' -c 'send "\n"' -c 'expect "Executing(%clean)"' -c 'expect "exit 0"' -c 'send "\n"'
 else
-	@$(RPM_BUILD_CMD) --rcfile ${RCFILELIST} --define="_sourcedir $(PWD)" --define="_topdir $(RPM_TMP_BUILD_DIR)" --define="_target_cpu $(RPM_BUILD_ARCH)" -ba $(PACKAGE).spec
+	@$(RPM_BUILD_CMD) --rcfile ${RCFILELIST} --define="_sourcedir $(PWD)" --define="_topdir $(RPM_TMP_BUILD_DIR)" --define="_target_cpu $(RPM_BUILD_ARCH)" --define="rel $(RELEASE)" -ba $(PACKAGE).spec
 endif
 	@mv $(RPM_SRPM_DIR)/$(RPM_SOURCE_NAME) .
 	@mv $(RPM_BINARY_DIR)/$(RPM_BINARY_NAME) .
 	@rm -rf $(RPM_TMP_BUILD_DIR)
 
 $(TARBALL):
-	bzr export $(TARBALL) $(BZRTREES)/$(BZR_MODULE)
+	bzr export $(EXPORT_TAG) $(TARBALL) $(BZRTREES)/$(BZR_MODULE)
 
 .PHONY : tarball rpm_package

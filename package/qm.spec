@@ -1,11 +1,14 @@
 %define name qm
+# upstream version, LSB specification version, LSB release version
 %define version 2.2
-%define release 4
+%define LSBSpec 3.1
+%define LSBRelease 3
 
 Summary: QMTest is an automated software test execution tool.
 Name: %{name}
 Version: %{version}
-Release: %{release}
+# rel is passed in from Makefile so we only have to set the buildno one place
+Release: %{rel}.lsb%{LSBRelease}
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Development/Libraries
