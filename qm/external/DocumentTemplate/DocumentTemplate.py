@@ -194,7 +194,7 @@ Document Templates may be created 4 ways:
 '''
 
 
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+__version__='$Revision$'[11:-2]
 
 ParseError='Document Template Parse Error'
 

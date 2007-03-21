@@ -82,7 +82,7 @@
 # attributions are listed in the accompanying credits file.
 # 
 ##############################################################################
-"$Id: DT_String.py,v 1.1.1.1 2004/06/22 05:15:22 mats Exp $"
+"$Id$"
 
 from string import split, strip
 import regex, ts_regex

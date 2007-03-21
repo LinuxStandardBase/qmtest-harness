@@ -82,8 +82,8 @@
 # attributions are listed in the accompanying credits file.
 # 
 ##############################################################################
-'''$Id: DT_Util.py,v 1.2 2005/02/22 23:15:22 mats Exp $''' 
-__version__='$Revision: 1.2 $'[11:-2]
+'''$Id$''' 
+__version__='$Revision$'[11:-2]
 
 import regex, string, math, os
 from string import strip, join, atoi, lower, split, find

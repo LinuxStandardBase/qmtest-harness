@@ -382,8 +382,8 @@
 
 ''' #'
 
-__rcs_id__='$Id: DT_In.py,v 1.1.1.1 2004/06/22 05:15:02 mats Exp $'
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+__rcs_id__='$Id$'
+__version__='$Revision$'[11:-2]
 
 from DT_Util import ParseError, parse_params, name_param, str
 from DT_Util import render_blocks, InstanceDict, ValidationError, VSEval, expr_globals
