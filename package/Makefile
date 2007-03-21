@@ -1,10 +1,10 @@
 # XXX We should play the usual tricks defining stuff here and building
 # XXX a specfile from this info, but not yet: for now keep in sync
-PACKAGE=qm
+PACKAGE=lsb-qm
 VERSION=2.2
 LSBSpec=3.1
 LSBRelease=3
-RELEASE=5
+RELEASE=6
 #
 # Derive date string for daily snapshots
 ISO_DATE=$(shell date +"%Y%m%d")

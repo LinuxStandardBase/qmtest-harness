@@ -1,4 +1,4 @@
-%define name qm
+%define name lsb-qm
 # upstream version, LSB specification version, LSB release version
 %define version 2.2
 %define LSBSpec 3.1
