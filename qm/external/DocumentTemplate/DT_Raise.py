@@ -95,8 +95,8 @@
     <!--#/if-->
 
 ''' 
-__rcs_id__='$Id: DT_Raise.py,v 1.1.1.1 2004/06/22 05:15:12 mats Exp $'
-__version__='$Revision: 1.1.1.1 $'[11:-2]
+__rcs_id__='$Id$'
+__version__='$Revision$'[11:-2]
 
 from DT_Util import parse_params, name_param, render_blocks, str
 
