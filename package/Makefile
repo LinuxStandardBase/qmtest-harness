@@ -52,7 +52,11 @@ BZRTREES?=http://bzr.freestandards.org/lsb/3.1
 BZR_MODULE=qmtest-harness
 
 # Default target
+ifndef BUILD_NO_DEB
 all: rpm_package deb_package
+else
+all: rpm_package
+endif
 
 clean:
 	@rm -f *.rpm *.deb *.tar.gz
@@ -63,6 +67,12 @@ deb_package: rpm_package
 	@fakeroot alien -cdk $(RPM_BINARY_NAME)
 
 rpm_package: $(RPM_BINARY_NAME) $(RPM_SOURCE_NAME) 
+
+list_uploadable:
+	@echo $(RPM_BINARY_NAME)
+ifndef BUILD_NO_DEB
+	@ls *.deb
+endif
 
 $(RPM_BINARY_NAME) $(RPM_SOURCE_NAME): $(PACKAGE).spec $(TARBALL) 
 	@mkdir -p $(RPM_TMP_BUILD_DIR)/BUILD
