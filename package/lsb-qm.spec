@@ -1,15 +1,17 @@
 %define name lsb-qm
-# upstream version, LSB specification version, LSB release version
-%define version 2.2
-%define LSBSpec 3.1
-%define LSBRelease 3
+%define rname qm
 
 Summary: QMTest is an automated software test execution tool.
 Name: %{name}
-Version: %{version}
-# rel is passed in from Makefile so we only have to set the buildno one place
+# rel, ver, LSBRelease is passed in from Makefile so we only have 
+# to set the buildno one place
+Version: %{ver}
 Release: %{rel}.lsb%{LSBRelease}
-Source0: %{name}-%{version}.tar.gz
+Source0: %{rname}_%{version}.orig.tar.gz
+Source1: configure
+Source2: configure.in
+Source3: GNUmakefile.in
+
 License: GPL
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-buildroot
@@ -27,21 +29,42 @@ QMTest is a cost-effective general purpose testing solution that can be
 used to implement a robust, easy-to-use testing process.
 
 %prep
-%setup
+%setup -q -n %{rname}-%{version}.orig
 
 %build
+cp %{SOURCE1} .
+cp %{SOURCE2} .
+cp %{SOURCE3} .
+
+# tarball we got from Debian uses whrandom, which is 
+# deprecated, replace with random
+sed -i 's|whrandom|random|g' qm/web.py 
+sed -i 's|whrandom|random|g' qm/test/web/web.py 
+sed -i 's|whrandom|random|g' qm/external/DocumentTemplate/DT_Util.py 
+
 ./configure --exec_prefix=/opt/lsb/test --with-python=/opt/lsb/appbat/bin/python
 env CFLAGS="$RPM_OPT_FLAGS" /opt/lsb/appbat/bin/python setup.py build
 
 %install
 /opt/lsb/appbat/bin/python setup.py install --root=$RPM_BUILD_ROOT --install-data=/opt/lsb/test --record=INSTALLED_FILES
 
+# this file is still holding the buildroot path
+sed -i "s|${RPM_BUILD_ROOT}|/opt/lsb/test|g" ${RPM_BUILD_ROOT}/opt/lsb/appbat/lib/python2.4/site-packages/qm/config.py
+rm -f ${RPM_BUILD_ROOT}/opt/lsb/appbat/lib/python2.4/site-packages/qm/config.pyc
+sed -i 's|/opt/lsb/appbat/lib/python2.4/site-packages/qm/config.pyc||g' INSTALLED_FILES
+
 %clean
 # uncomment later. leave in now for speed
-if [ ! -z "${RPM_BUILD_ROOT}"  -a "${RPM_BUILD_ROOT}" != "/" ]; then 
+if [ -e "${RPM_BUILD_ROOT}"  -a "${RPM_BUILD_ROOT}" != "/" ]; then 
     rm -rf ${RPM_BUILD_ROOT}
 fi
 
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
+
+%changelog
+* Wed Sep 03 2008 Stew Benedict <stewb@linux-foundation.org>
+- use upstream tarball (bug 711)
+
+
