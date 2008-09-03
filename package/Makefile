@@ -1,17 +1,19 @@
 # XXX We should play the usual tricks defining stuff here and building
 # XXX a specfile from this info, but not yet: for now keep in sync
 PACKAGE=lsb-qm
+REAL_NAME=qmtest
 VERSION=2.2
-LSBSpec=3.1
-LSBRelease=3
-RELEASE=6
+LSBSpec=4.0
+LSBRelease=4
+RELEASE=7
+
 #
 # Derive date string for daily snapshots
 ISO_DATE=$(shell date +"%Y%m%d")
 PWD=$(shell pwd)
 
 FULL_PACKAGE_NAME=$(PACKAGE)-$(VERSION)
-TARBALL=$(FULL_PACKAGE_NAME).tar.gz
+TARBALL=qm_$(VERSION).orig.tar.gz
 RPM_BINARY_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).$(RPM_BUILD_ARCH).rpm
 RPM_SOURCE_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).src.rpm
 
@@ -48,7 +50,7 @@ RPM_BINARY_DIR=$(RPM_TMP_BUILD_DIR)/RPMS/$(RPM_BUILD_ARCH)
 RPM_SRPM_DIR=$(RPM_TMP_BUILD_DIR)/SRPMS
 
 # Override this on the command line to use a different repo
-BZRTREES?=http://bzr.freestandards.org/lsb/3.1
+BZRTREES?=http://bzr.freestandards.org/lsb/devel
 BZR_MODULE=qmtest-harness
 
 # Default target
@@ -59,7 +61,7 @@ all: rpm_package
 endif
 
 clean:
-	@rm -f *.rpm *.deb *.tar.gz
+	@rm -f *.rpm *.deb
 
 tarball: $(TARBALL) 
 
@@ -79,15 +81,15 @@ $(RPM_BINARY_NAME) $(RPM_SOURCE_NAME): $(PACKAGE).spec $(TARBALL)
 	@mkdir -p $(RPM_TMP_BUILD_DIR)/RPMS
 	@mkdir -p $(RPM_TMP_BUILD_DIR)/SRPMS
 ifdef SIGN_PACKAGES
-	@expect -c 'set timeout -1' -c 'spawn $(RPM_BUILD_CMD) --sign --rcfile ${RCFILELIST} --define=_sourcedir\ $(PWD) --define=_topdir\ $(RPM_TMP_BUILD_DIR) --define=_target_cpu\ $(RPM_BUILD_ARCH) --define=rel\ $(RELEASE) -ba $(PACKAGE).spec' -c 'expect -ex "Enter pass phrase:"' -c 'send "\n"' -c 'expect "Executing(%clean)"' -c 'expect "exit 0"' -c 'send "\n"'
+	@expect -c 'set timeout -1' -c 'spawn $(RPM_BUILD_CMD) --sign --rcfile ${RCFILELIST} --define=_sourcedir\ $(PWD) --define=_topdir\ $(RPM_TMP_BUILD_DIR) --define=_target_cpu\ $(RPM_BUILD_ARCH) --define=ver\ $(VERSION) --define=rel\ $(RELEASE) --define=LSBRelease\ $(LSBRelease) -ba $(PACKAGE).spec' -c 'expect -ex "Enter pass phrase:"' -c 'send "\n"' -c 'expect "Executing(%clean)"' -c 'expect "exit 0"' -c 'send "\n"'
 else
-	@$(RPM_BUILD_CMD) --rcfile ${RCFILELIST} --define="_sourcedir $(PWD)" --define="_topdir $(RPM_TMP_BUILD_DIR)" --define="_target_cpu $(RPM_BUILD_ARCH)" --define="rel $(RELEASE)" -ba $(PACKAGE).spec
+	@$(RPM_BUILD_CMD) --rcfile ${RCFILELIST} --define="_sourcedir $(PWD)" --define="_topdir $(RPM_TMP_BUILD_DIR)" --define="_target_cpu $(RPM_BUILD_ARCH)" --define="ver $(VERSION)" --define="rel $(RELEASE)" --define="LSBRelease $(LSBRelease)" -ba $(PACKAGE).spec
 endif
 	@mv $(RPM_SRPM_DIR)/$(RPM_SOURCE_NAME) .
 	@mv $(RPM_BINARY_DIR)/$(RPM_BINARY_NAME) .
 	@rm -rf $(RPM_TMP_BUILD_DIR)
 
 $(TARBALL):
-	bzr export $(EXPORT_TAG) $(TARBALL) $(BZRTREES)/$(BZR_MODULE)
+	wget http://ftp.de.debian.org/debian/pool/main/q/qm/$(TARBALL)
 
 .PHONY : tarball rpm_package
