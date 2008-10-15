@@ -25,8 +25,8 @@ TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
 # OFFICIAL_RELEASE should be set to the tag to extract from CVS
 ifdef OFFICIAL_RELEASE
 VERSION_SUFFIX=
-# EXPORT_TAG should be set to the cvs tag to use
-EXPORT_TAG=--revision=otag:$(OFFICIAL_RELEASE)
+# EXPORT_TAG should be set to the bzr revisionspec to use
+EXPORT_TAG=--revision=$(OFFICIAL_RELEASE)
 else
 VERSION_SUFFIX=.$(ISO_DATE)
 EXPORT_TAG=
