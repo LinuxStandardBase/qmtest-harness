@@ -53,6 +53,12 @@ sed -i "s|${RPM_BUILD_ROOT}|/opt/lsb/test|g" ${RPM_BUILD_ROOT}/opt/lsb/appbat/li
 rm -f ${RPM_BUILD_ROOT}/opt/lsb/appbat/lib/python2.4/site-packages/qm/config.pyc
 sed -i 's|/opt/lsb/appbat/lib/python2.4/site-packages/qm/config.pyc||g' INSTALLED_FILES
 
+# bug 2509 - drop all .pyc/.pyo files
+find ${RPM_BUILD_ROOT}/opt/lsb -name '*.pyc' | xargs rm -f
+find ${RPM_BUILD_ROOT}/opt/lsb -name '*.pyo' | xargs rm -f
+cp INSTALLED_FILES INSTALLED_FILES.pyc
+grep -v '\.pyc' INSTALLED_FILES.pyc > INSTALLED_FILES
+
 %clean
 # uncomment later. leave in now for speed
 if [ -e "${RPM_BUILD_ROOT}"  -a "${RPM_BUILD_ROOT}" != "/" ]; then 
