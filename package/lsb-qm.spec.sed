@@ -1,3 +1,8 @@
+# %rel, %ver, %LSBRelease are defined in the Makefile
+%define ver @VERSION@
+%define rel @RELEASE@
+%define LSBRelease @LSBRELEASE@
+
 %define name lsb-qm
 %define rname qm
 
