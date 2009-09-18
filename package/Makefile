@@ -15,7 +15,7 @@ FULL_PACKAGE_NAME=$(PACKAGE)-$(VERSION)
 TARBALL=qm_$(VERSION).orig.tar.gz
 RPM_BINARY_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).$(RPM_BUILD_ARCH).rpm
 RPM_SOURCE_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).src.rpm
-
+TARBALL_URL=http://old-releases.ubuntu.com/ubuntu/pool/universe/q/qm
 
 # Temporary build directory
 TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
@@ -93,6 +93,6 @@ endif
 	@rm -rf $(RPM_TMP_BUILD_DIR)
 
 $(TARBALL):
-	wget http://einstein.speech-design.de/ftppub/debian/pool/main/q/qm/$(TARBALL)
+	wget $(TARBALL_URL)/$(TARBALL)
 
 .PHONY : tarball rpm_package
