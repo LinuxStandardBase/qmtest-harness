@@ -4,7 +4,7 @@ REAL_NAME=qmtest
 VERSION=2.2
 LSBSpec=4.0
 LSBRelease=4
-RELEASE=10
+RELEASE=11
 
 #
 # Derive date string for daily snapshots
