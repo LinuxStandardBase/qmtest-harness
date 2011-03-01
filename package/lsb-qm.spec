@@ -62,8 +62,36 @@ fi
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
+# directories not called out in INSTALLED_FILES
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm/external
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm/external/DocumentTemplate
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm/test
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm/test/classes
+%dir /opt/lsb/appbat/lib/python2.4/site-packages/qm/test/web
+%dir /opt/lsb/test/qm
+%dir /opt/lsb/test/qm/diagnostics
+%dir /opt/lsb/test/qm/doc
+%dir /opt/lsb/test/qm/doc/test
+%dir /opt/lsb/test/qm/doc/test/html
+%dir /opt/lsb/test/qm/doc/test/print
+%dir /opt/lsb/test/qm/dtml
+%dir /opt/lsb/test/qm/dtml/test
+%dir /opt/lsb/test/qm/messages
+%dir /opt/lsb/test/qm/messages/test
+%dir /opt/lsb/test/qm/tutorial
+%dir /opt/lsb/test/qm/tutorial/test
+%dir /opt/lsb/test/qm/tutorial/test/tdb
+%dir /opt/lsb/test/qm/tutorial/test/tdb/QMTest
+%dir /opt/lsb/test/qm/web
+%dir /opt/lsb/test/qm/web/images
+%dir /opt/lsb/test/qm/web/stylesheets
+%dir /opt/lsb/test/qm/xml
 
 %changelog
+* Thu Feb 24 2011 Stew Benedict <stewb@linux-foundation.org>
+- own the directories we populate (bug 3195)
+
 * Wed Sep 03 2008 Stew Benedict <stewb@linux-foundation.org>
 - use upstream tarball (bug 711)
 
