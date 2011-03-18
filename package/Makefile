@@ -6,6 +6,9 @@ LSBSpec=4.0
 LSBRelease=4
 RELEASE=11
 
+# for pkgchk
+DEPS=-d lsb-python
+
 #
 # Derive date string for daily snapshots
 ISO_DATE=$(shell date +"%Y%m%d")
@@ -60,7 +63,7 @@ all: rpm_package
 endif
 
 clean:
-	@rm -f *.rpm *.deb $(PACKAGE).spec
+	@rm -f *.rpm *.deb $(PACKAGE).spec journal.*
 
 tarball: $(TARBALL) 
 
@@ -91,6 +94,9 @@ endif
 	@mv $(RPM_SRPM_DIR)/$(RPM_SOURCE_NAME) .
 	@mv $(RPM_BINARY_DIR)/$(RPM_BINARY_NAME) .
 	@rm -rf $(RPM_TMP_BUILD_DIR)
+
+pkgchk: $(RPM_BINARY_NAME)
+	/opt/lsb/bin/lsbpkgchk -L lsb $(DEPS) -t $(RPM_BINARY_NAME)
 
 $(TARBALL):
 	wget $(TARBALL_URL)/$(TARBALL)
