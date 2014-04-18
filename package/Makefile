@@ -4,7 +4,7 @@ REAL_NAME=qmtest
 VERSION=2.2
 LSBSpec=4.0
 LSBRelease=4
-RELEASE_NUM=11
+BUILDNO=12
 
 # for pkgchk
 DEPS=-d lsb-python
@@ -26,11 +26,11 @@ TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
 # Handle different version generation for snapshots than for official builds
 # OFFICIAL_RELEASE should be set to the tag to extract from CVS
 ifdef OFFICIAL_RELEASE
-RELEASE=$(RELEASE_NUM)
+RELEASE=$(BUILDNO)
 # EXPORT_TAG should be set to the bzr revisionspec to use
 EXPORT_TAG=--revision=$(OFFICIAL_RELEASE)
 else
-RELEASE=$(RELEASE_NUM).$(ISO_DATE)
+RELEASE=0.$(ISO_DATE).$(BUILDNO)
 EXPORT_TAG=
 endif
 
