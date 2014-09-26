@@ -2,9 +2,9 @@
 PACKAGE=lsb-qm
 REAL_NAME=qmtest
 VERSION=2.2
-LSBSpec=4.0
-LSBRelease=4
-BUILDNO=12
+LSBSpec=5.0
+LSBRelease=5
+BUILDNO=1
 
 # for pkgchk
 DEPS=-d lsb-python
