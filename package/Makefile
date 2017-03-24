@@ -4,7 +4,7 @@ REAL_NAME=qmtest
 VERSION=2.2
 LSBSpec=5.0
 LSBRelease=5
-BUILDNO=1
+BUILDNO=2
 
 # for pkgchk
 DEPS=-d lsb-python
@@ -19,6 +19,7 @@ TARBALL=qm_$(VERSION).orig.tar.gz
 RPM_BINARY_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).$(RPM_BUILD_ARCH).rpm
 RPM_SOURCE_NAME=$(FULL_PACKAGE_NAME)-$(RELEASE).lsb$(LSBRelease).src.rpm
 TARBALL_URL=http://old-releases.ubuntu.com/ubuntu/pool/universe/q/qm
+TARBALL_ALT_URL=http://ftp.linuxfoundation.org/pub/lsb/impl/packages
 
 # Temporary build directory
 TMP_BUILD_DIR=/tmp/$(FULL_PACKAGE_NAME)
@@ -100,6 +101,6 @@ pkgchk: $(RPM_BINARY_NAME)
 	/opt/lsb/bin/lsbpkgchk -L lsb $(DEPS) -t $(RPM_BINARY_NAME)
 
 $(TARBALL):
-	wget $(TARBALL_URL)/$(TARBALL)
+	wget $(TARBALL_URL)/$(TARBALL) || wget $(TARBALL_ALT_URL)/$(TARBALL)
 
 .PHONY : tarball rpm_package
